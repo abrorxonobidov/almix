@@ -8,6 +8,19 @@ return [
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
+        ],
+        'i18n' => [
+            'translations' => [
+                'main*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/messages',
+                    'sourceLanguage' => 'uz',
+                    'fileMap' => [
+                        'main' => 'main.php',
+                        'main/error' => 'error.php'
+                    ]
+                ]
+            ]
         ]
     ],
 ];

@@ -37,14 +37,17 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
+            'class' => 'codemix\localeurls\UrlManager',
+            'enableDefaultLanguageUrlCode' => true,
+            'enableLanguagePersistence' => false,
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-            ],
+                '' => '/site/index',
+                '<controller>/<action>/<id:\d+>' => '<controller>/<action>'
+            ]
         ],
-        */
     ],
     'params' => $params,
 ];

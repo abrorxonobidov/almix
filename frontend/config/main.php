@@ -38,7 +38,7 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => [
-            'class' => \codemix\localeurls\UrlManager::class,
+            'class' => 'codemix\localeurls\UrlManager',
             'enableDefaultLanguageUrlCode' => true,
             'enableLanguagePersistence' => false,
             'languages' => ['uz', 'ru', 'oz'],
@@ -47,7 +47,7 @@ return [
             'rules' => [
                 '' => '/site/index',
                 '<controller>/<action>/<id:\d+>' => '<controller>/<action>'
-            ],
+            ]
         ]
     ],
     'params' => $params,
