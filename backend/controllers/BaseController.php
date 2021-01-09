@@ -9,6 +9,7 @@
 namespace backend\controllers;
 
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 
 
@@ -33,7 +34,13 @@ class BaseController extends Controller {
                         'roles' => ['@'],
                     ],
                 ],
-            ]
+            ],
+            'verbs' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
         ];
     }
 };

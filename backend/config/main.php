@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'almix-backend',
+    'name' => 'Almix | admin',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],

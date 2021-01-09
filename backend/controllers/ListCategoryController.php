@@ -3,24 +3,24 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Lists;
-use backend\models\ListsSearch;
-use yii\web\Controller;
+use common\models\ListCategory;
+use common\models\ListCategorySearch;
 use yii\web\NotFoundHttpException;
 
 /**
- * ListsController implements the CRUD actions for Lists model.
+ * ListCategoryController implements the CRUD actions for ListCategory model.
  */
-class ListsController extends Controller
+class ListCategoryController extends BaseController
 {
 
+
     /**
-     * Lists all Lists models.
+     * Lists all ListCategory models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ListsSearch();
+        $searchModel = new ListCategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -30,7 +30,7 @@ class ListsController extends Controller
     }
 
     /**
-     * Displays a single Lists model.
+     * Displays a single ListCategory model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -43,13 +43,13 @@ class ListsController extends Controller
     }
 
     /**
-     * Creates a new Lists model.
+     * Creates a new ListCategory model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Lists();
+        $model = new ListCategory();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -61,7 +61,7 @@ class ListsController extends Controller
     }
 
     /**
-     * Updates an existing Lists model.
+     * Updates an existing ListCategory model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -81,11 +81,11 @@ class ListsController extends Controller
     }
 
     /**
-     * Deletes an existing Lists model.
+     * Deletes an existing ListCategory model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param $id
-     * @return \yii\web\Response
-     * @throws NotFoundHttpException | \yii\db\StaleObjectException | mixed
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException | mixed if the model cannot be found
      */
     public function actionDelete($id)
     {
@@ -95,15 +95,15 @@ class ListsController extends Controller
     }
 
     /**
-     * Finds the Lists model based on its primary key value.
+     * Finds the ListCategory model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Lists the loaded model
+     * @return ListCategory the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Lists::findOne($id)) !== null) {
+        if (($model = ListCategory::findOne($id)) !== null) {
             return $model;
         }
 
