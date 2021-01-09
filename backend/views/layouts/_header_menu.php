@@ -59,6 +59,10 @@ if (Yii::$app->user->isGuest) {
         'items' => $subItems,
         'encode' => false
     ];
+    $menuItems[] = [
+        'label' => 'Ketegoriyalar',
+        'url' => ['list-category/index']
+    ];
     $menuItems[] =
         Html::beginTag('li')
         . Html::beginForm(['site/logout'], 'post')

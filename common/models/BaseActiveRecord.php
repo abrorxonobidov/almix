@@ -22,6 +22,9 @@ use yii\web\UploadedFile;
  * @property string $titleLang
  * @property string $helpImage
  * @property integer $status
+ *
+ * @property Log $created
+ * @property Log $updated
  */
 class BaseActiveRecord extends ActiveRecord
 {
@@ -78,9 +81,9 @@ class BaseActiveRecord extends ActiveRecord
             'image' => Yii::t('main', 'Rasm'),
             'helpImage' => Yii::t('main', 'Rasm'),
             'created.date' => Yii::t('main', 'Yaratilgan sana'),
-            'created.user.nameAndSurname' => Yii::t('main', 'Yaratuvchi'),
+            'created.user.full_name' => Yii::t('main', 'Yaratuvchi'),
             'updated.date' => Yii::t('main', 'Tahrirlangan sana'),
-            'updated.user.nameAndSurname' => Yii::t('main', 'Tahrirlovchi'),
+            'updated.user.full_name' => Yii::t('main', 'Tahrirlovchi'),
         ];
     }
 
@@ -173,22 +176,23 @@ class BaseActiveRecord extends ActiveRecord
 
 
     /**
-     * @return ActiveQuery || Logs
+     * @return ActiveQuery || Log
      */
     public function getCreated()
     {
         return $this->hasOne(Log::class, ['row_id' => 'id'])
-            ->onCondition(['table' => $this::tableName(), 'action_id' => Log::ACTION_INSERT]);
+            ->onCondition(['table_name' => $this::tableName(), 'action_id' => Log::ACTION_INSERT])
+            ;
     }
 
 
     /**
-     * @return ActiveQuery || Logs
+     * @return ActiveQuery || Log
      */
     public function getUpdated()
     {
         return $this->hasOne(Log::class, ['row_id' => 'id'])
-            ->onCondition(['table' => $this::tableName(), 'action_id' => Log::ACTION_UPDATE])
+            ->onCondition(['table_name' => $this::tableName(), 'action_id' => Log::ACTION_UPDATE])
             ->orderBy(['date' => SORT_DESC]);
     }
 

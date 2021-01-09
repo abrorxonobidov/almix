@@ -58,6 +58,15 @@ class Log extends ActiveRecord
         ];
     }
 
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
     /**
      * {@inheritdoc}
      * @return LogQuery the active query used by this AR class.

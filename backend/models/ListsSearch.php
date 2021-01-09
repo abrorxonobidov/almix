@@ -17,7 +17,7 @@ class ListsSearch extends Lists
     public function rules()
     {
         return [
-            [['id', 'category_id', 'order'], 'integer'],
+            [['id', 'category_id', 'order', 'status'], 'integer'],
             [['title_uz', 'title_ru', 'title_en', 'preview_uz', 'preview_ru', 'preview_en', 'description_uz', 'description_ru', 'description_en', 'preview_image', 'gallery'], 'safe'],
         ];
     }
@@ -61,19 +61,22 @@ class ListsSearch extends Lists
             'id' => $this->id,
             'category_id' => $this->category_id,
             'order' => $this->order,
+            'status' => $this->status
         ]);
 
-        $query->andFilterWhere(['like', 'title_uz', $this->title_uz])
-            ->andFilterWhere(['like', 'title_ru', $this->title_ru])
-            ->andFilterWhere(['like', 'title_en', $this->title_en])
-            ->andFilterWhere(['like', 'preview_uz', $this->preview_uz])
-            ->andFilterWhere(['like', 'preview_ru', $this->preview_ru])
-            ->andFilterWhere(['like', 'preview_en', $this->preview_en])
-            ->andFilterWhere(['like', 'description_uz', $this->description_uz])
-            ->andFilterWhere(['like', 'description_ru', $this->description_ru])
-            ->andFilterWhere(['like', 'description_en', $this->description_en])
-            ->andFilterWhere(['like', 'preview_image', $this->preview_image])
-            ->andFilterWhere(['like', 'gallery', $this->gallery]);
+        $query
+            ->andFilterWhere([
+                'OR',
+                ['like', 'title_uz', $this->title_uz],
+                ['like', 'title_ru', $this->title_uz],
+                ['like', 'title_en', $this->title_uz]
+            ])
+            ->andFilterWhere([
+                'OR',
+                ['like', 'preview_uz', $this->preview_uz],
+                ['like', 'preview_ru', $this->preview_uz],
+                ['like', 'preview_en', $this->preview_uz]
+            ]);
 
         return $dataProvider;
     }

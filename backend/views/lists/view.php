@@ -10,6 +10,8 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Lists'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
+\common\helpers\DebugHelper::printSingleObject($model->updated->user, 0);
 ?>
 <div class="lists-view">
 
@@ -37,12 +39,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'preview_uz',
             'preview_ru',
             'preview_en',
-            'description_uz:ntext',
-            'description_ru:ntext',
-            'description_en:ntext',
-            'preview_image',
+            'description_uz:html',
+            'description_ru:html',
+            'description_en:html',
+            [
+                'attribute' => 'preview_image',
+                'value' => $model->preview_image ? Html::img('@frontend/web/uploads/' . $model->preview_image) : '',
+                'format' => 'raw'
+            ],
+            'order',
             'gallery',
             'order',
+            'created.date',
+            'created.user.full_name',
+            'updated.date',
+            'updated.user.full_name',
+            'statusIconAndTitle:raw',
         ],
     ]) ?>
 

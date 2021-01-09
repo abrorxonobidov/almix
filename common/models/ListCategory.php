@@ -14,6 +14,7 @@ use Yii;
  * @property string|null $title_en
  * @property string|null $image
  * @property int|null $type_id
+ * @property int|null $status
  *
  * @property Lists[] $lists
  * @property ListCategory $parent
@@ -21,6 +22,12 @@ use Yii;
  */
 class ListCategory extends BaseActiveRecord
 {
+
+    const TYPE_LIST = 1;
+
+    const TYPE_PRODUCT = 2;
+
+
     /**
      * {@inheritdoc}
      */
@@ -35,7 +42,7 @@ class ListCategory extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['parent_id', 'type_id'], 'integer'],
+            [['parent_id', 'type_id', 'status'], 'integer'],
             [['title_uz'], 'required'],
             [['title_uz', 'title_ru', 'title_en', 'image'], 'string', 'max' => 255],
             [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => ListCategory::class, 'targetAttribute' => ['parent_id' => 'id']],

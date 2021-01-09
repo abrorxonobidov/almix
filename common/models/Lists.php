@@ -21,6 +21,7 @@ use Yii;
  * @property string|null $preview_image
  * @property string|null $gallery
  * @property int|null $order
+ * @property int|null $status
  *
  * @property ListCategory $category
  */
@@ -41,11 +42,12 @@ class Lists extends BaseActiveRecord
     {
         return [
             [['category_id', 'title_uz'], 'required'],
-            [['category_id', 'order'], 'integer'],
+            [['category_id', 'order', 'status'], 'integer'],
             [['description_uz', 'description_ru', 'description_en'], 'string'],
             [['title_uz', 'title_ru', 'title_en', 'preview_uz', 'preview_ru', 'preview_en', 'preview_image', 'gallery'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ListCategory::class, 'targetAttribute' => ['category_id' => 'id']],
             [['order'], 'default', 'value' => 500],
+            [['status'], 'default', 'value' => 1],
         ];
     }
 
@@ -55,8 +57,8 @@ class Lists extends BaseActiveRecord
     public function attributeLabels()
     {
         return parent::attributeLabels() + [
-            'category_id' => Yii::t('main', 'Category ID'),
-            'preview_image' => Yii::t('main', 'Azoh rasmi'),
+            'category_id' => Yii::t('main', 'Kategoriya ID'),
+            'preview_image' => Yii::t('main', 'Izoh rasmi'),
             'gallery' => Yii::t('main', 'Gallery'),
         ];
     }
