@@ -19,7 +19,7 @@ use Yii;
  * @property ListCategory $parent
  * @property ListCategory[] $children
  */
-class ListCategory extends \yii\db\ActiveRecord
+class ListCategory extends BaseActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -47,15 +47,10 @@ class ListCategory extends \yii\db\ActiveRecord
      */
     public function attributeLabels()
     {
-        return [
-            'id' => Yii::t('main', 'ID'),
-            'parent_id' => Yii::t('main', 'Parent ID'),
-            'title_uz' => Yii::t('main', 'Title Uz'),
-            'title_ru' => Yii::t('main', 'Title Ru'),
-            'title_en' => Yii::t('main', 'Title En'),
-            'image' => Yii::t('main', 'Image'),
-            'type_id' => Yii::t('main', 'Type ID'),
-        ];
+        return parent::attributeLabels() + [
+                'parent_id' => Yii::t('main', 'Parent ID'),
+                'type_id' => Yii::t('main', 'Type ID'),
+            ];
     }
 
     /**

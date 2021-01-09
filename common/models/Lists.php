@@ -24,7 +24,7 @@ use Yii;
  *
  * @property ListCategory $category
  */
-class Lists extends \yii\db\ActiveRecord
+class Lists extends BaseActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -45,6 +45,7 @@ class Lists extends \yii\db\ActiveRecord
             [['description_uz', 'description_ru', 'description_en'], 'string'],
             [['title_uz', 'title_ru', 'title_en', 'preview_uz', 'preview_ru', 'preview_en', 'preview_image', 'gallery'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ListCategory::class, 'targetAttribute' => ['category_id' => 'id']],
+            [['order'], 'default', 'value' => 500],
         ];
     }
 
@@ -53,21 +54,10 @@ class Lists extends \yii\db\ActiveRecord
      */
     public function attributeLabels()
     {
-        return [
-            'id' => Yii::t('main', 'ID'),
+        return parent::attributeLabels() + [
             'category_id' => Yii::t('main', 'Category ID'),
-            'title_uz' => Yii::t('main', 'Title Uz'),
-            'title_ru' => Yii::t('main', 'Title Ru'),
-            'title_en' => Yii::t('main', 'Title En'),
-            'preview_uz' => Yii::t('main', 'Preview Uz'),
-            'preview_ru' => Yii::t('main', 'Preview Ru'),
-            'preview_en' => Yii::t('main', 'Preview En'),
-            'description_uz' => Yii::t('main', 'Description Uz'),
-            'description_ru' => Yii::t('main', 'Description Ru'),
-            'description_en' => Yii::t('main', 'Description En'),
-            'preview_image' => Yii::t('main', 'Preview Image'),
+            'preview_image' => Yii::t('main', 'Azoh rasmi'),
             'gallery' => Yii::t('main', 'Gallery'),
-            'order' => Yii::t('main', 'Order'),
         ];
     }
 

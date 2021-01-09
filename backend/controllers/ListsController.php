@@ -5,28 +5,27 @@ namespace backend\controllers;
 use Yii;
 use common\models\Lists;
 use backend\models\ListsSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * ListsController implements the CRUD actions for Lists model.
  */
-class ListsController extends Controller
+class ListsController extends BaseController
 {
     /**
      * {@inheritdoc}
      */
     public function behaviors()
     {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'delete' => ['POST'],
+        return parent::behaviors() + [
+                'verbs' => [
+                    'class' => VerbFilter::class,
+                    'actions' => [
+                        'delete' => ['POST'],
+                    ],
                 ],
-            ],
-        ];
+            ];
     }
 
     /**
@@ -98,9 +97,9 @@ class ListsController extends Controller
     /**
      * Deletes an existing Lists model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @param $id
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException | \yii\db\StaleObjectException | mixed
      */
     public function actionDelete($id)
     {
