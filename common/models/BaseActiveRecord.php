@@ -29,6 +29,9 @@ use yii\web\UploadedFile;
 class BaseActiveRecord extends ActiveRecord
 {
 
+    public $helpImage;
+    public $helpGallery;
+
     public function afterSave($insert, $changedAttributes)
     {
 
@@ -118,7 +121,7 @@ class BaseActiveRecord extends ActiveRecord
         return [
             1 => [
                 'title' => 'Aktiv',
-                'icon' => 'check-circle',
+                'icon' => 'ok',
                 'color' => '#00ff00'
             ],
             0 => [
@@ -146,7 +149,7 @@ class BaseActiveRecord extends ActiveRecord
     {
         return
             Html::tag('i', '', [
-                'class' => 'fa fa-' . self::getStatusList()[$this->status]['icon'],
+                'class' => 'glyphicon glyphicon-' . self::getStatusList()[$this->status]['icon'],
                 'style' => 'color: ' . self::getStatusList()[$this->status]['color'] . ';',
                 'title' => self::getStatusTitle()
             ]);
@@ -165,12 +168,11 @@ class BaseActiveRecord extends ActiveRecord
     /**
      * @return array
      */
-    public function getStatusListKeyAndTitle()
+    public static function getStatusListKeyAndTitle()
     {
         $array = [];
-        foreach (self::getStatusList() as $key => $item) {
+        foreach (self::getStatusList() as $key => $item)
             $array[$key] = $item['title'];
-        }
         return $array;
     }
 

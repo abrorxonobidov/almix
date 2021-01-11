@@ -93,4 +93,21 @@ class ListCategorySearch extends ListCategory
             ->cache(Yii::$app->params['cacheDurationNormal'])
             ->all();
     }
+
+    public static function getForDropDown()
+    {
+        $cats = self::find()
+            ->select([
+                'id',
+                'title' => 'title_' . Yii::$app->language
+            ])
+            ->active()
+            ->asArray()
+            ->all();
+        $res = [];
+        foreach ($cats as $cat)
+            $res[$cat['id']] = $cat['title'];
+        return $res;
+    }
+
 }

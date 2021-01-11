@@ -60,6 +60,7 @@ class Lists extends BaseActiveRecord
             'category_id' => Yii::t('main', 'Kategoriya ID'),
             'preview_image' => Yii::t('main', 'Izoh rasmi'),
             'gallery' => Yii::t('main', 'Gallery'),
+            'helpGallery' => Yii::t('main', 'Gallery'),
         ];
     }
 

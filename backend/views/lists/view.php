@@ -10,8 +10,6 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Lists'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
-
-\common\helpers\DebugHelper::printSingleObject($model->updated->user, 0);
 ?>
 <div class="lists-view">
 
@@ -49,7 +47,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'order',
             'gallery',
-            'order',
             'created.date',
             'created.user.full_name',
             'updated.date',
