@@ -2,6 +2,8 @@
 
 namespace backend\controllers;
 
+use common\helpers\DebugHelper;
+use common\models\BaseActiveRecord;
 use Yii;
 use common\models\Lists;
 use backend\models\ListsSearch;
@@ -45,14 +47,21 @@ class ListsController extends Controller
     /**
      * Creates a new Lists model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException
      */
     public function actionCreate()
     {
         $model = new Lists();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->uploadImage('helpImage', 'preview_image', 'lists');
+            $model->uploadGallery('helpGallery', 'gallery', 'lists');
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                DebugHelper::printSingleObject($model->errors, 1);
+            }
         }
 
         return $this->render('create', [
@@ -71,8 +80,14 @@ class ListsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->uploadImage('helpImage', 'preview_image', 'lists');
+            $model->uploadGallery('helpGallery', 'gallery', 'lists');
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                DebugHelper::printSingleObject($model->errors, 1);
+            }
         }
 
         return $this->render('update', [
@@ -111,4 +126,53 @@ class ListsController extends Controller
 
         throw new NotFoundHttpException(Yii::t('main', 'The requested page does not exist.'));
     }
+
+    public function actionFileRemove()
+    {
+        $return = false;
+        $file = Yii::getAlias('@frontend') . '/web/uploads/' . Yii::$app->request->post('key');
+        $id = Yii::$app->request->post('id');
+        $field = Yii::$app->request->post('field');
+        $className = Yii::$app->request->post('className');
+        $model = $className::findOne($id);
+        /** @var $model \yii\db\ActiveRecord */
+        $model->$field = '';
+        $model->updateAttributes([$field]);
+
+        if (isset($file) && file_exists($file)) {
+            unlink($file);
+            $return = true;
+        }
+        return $return;
+    }
+
+
+    /**
+     * @return bool
+     * @throws NotFoundHttpException
+     */
+    public function actionGalleryRemove()
+    {
+        $return = false;
+        $path = Yii::$app->params['imageUploadPath']
+            . Yii::$app->request->post('key')
+            . '/';
+        $file = $path . Yii::$app->request->post('imageName');
+        if (isset($file) && file_exists($file)) {
+            unlink($file);
+            $return = true;
+        }
+
+        $images = glob($path . "/{*.jpg,*.jpeg,*.gif,*.png}", GLOB_BRACE);
+
+        if (count($images) == 0) {
+            BaseActiveRecord::deleteDir($path);
+            $model = Lists::findOne(Yii::$app->request->post('id'));
+            $model->gallery = '';
+            $model->save();
+        }
+
+        return $return;
+    }
+
 }

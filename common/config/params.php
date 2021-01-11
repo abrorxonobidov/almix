@@ -14,4 +14,5 @@ return [
     'cacheDurationMax' => 1800, //seconds = 30 minute
     'cacheDurationNormal' => 300, //seconds = 5 minute
     'cacheDurationMin' => 60, //seconds = 1 minute
+    'imageUploadPath' => Yii::getAlias('@frontend') . '/web/uploads/',
 ];

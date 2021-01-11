@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "lists".
@@ -82,5 +83,37 @@ class Lists extends BaseActiveRecord
     public static function find()
     {
         return new ListsQuery(get_called_class());
+    }
+
+    public function inputGalleryConfig()
+    {
+        $config = [
+            'path' => [],
+            'config' => []
+        ];
+        if (!$this->isNewRecord && !empty($this->gallery)) {
+
+            $files = glob(self::uploadImagePath() . $this->gallery . "/{*.jpg,*.jpeg,*.gif,*.png}", GLOB_BRACE);
+
+            foreach ($files as $file) {
+                $filePath = explode('/', $file);
+                $imageName = end($filePath);
+                if (file_exists($file)) {
+                    $config['path'][] = Url::to(self::imageSourcePath() .  $this->gallery . '/' . $imageName);
+                    $config['config'][] = [
+                        'caption' => $imageName,
+                        'size' => filesize($file),
+                        'url' => Url::to(['lists/gallery-remove']),
+                        'key' => $this->gallery,
+                        'extra' => [
+                            'id' => $this->id,
+                            'count' => count($files),
+                            'imageName' => $imageName
+                        ],
+                    ];
+                }
+            }
+        }
+        return $config;
     }
 }

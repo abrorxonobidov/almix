@@ -42,11 +42,29 @@ $this->params['breadcrumbs'][] = $this->title;
             'description_en:html',
             [
                 'attribute' => 'preview_image',
-                'value' => $model->preview_image ? Html::img('@frontend/web/uploads/' . $model->preview_image) : '',
+                'value' => Html::img($model::imageSourcePath() . $model->preview_image, ['class' => 'col-md-4'])
+                    . ' ' . Html::tag('p', $model->preview_image),
                 'format' => 'raw'
             ],
             'order',
-            'gallery',
+            [
+                'label' => Yii::t('main', 'Galeriya'),
+                'format' => 'html',
+                'value' => function ($model) {
+                    /** @var $model \common\models\Lists */
+                    if (!$model->gallery) {
+                        return '';
+                    }
+                    $images = glob($model::uploadImagePath() . $model->gallery . "/{*.jpg,*.jpeg,*.gif,*.png}", GLOB_BRACE);
+                    $gallery = [];
+                    foreach ($images as $image) {
+                        $filePath = explode('/', $image);
+                        $fileName = end($filePath);
+                        $gallery[] = Html::img($model::imageSourcePath() . $model->gallery . '/' . $fileName, ['style' => 'height:150px;']);
+                    }
+                    return implode(' ', $gallery) . Html::tag('br') . $model->gallery;
+                }
+            ],
             'created.date',
             'created.user.full_name',
             'updated.date',

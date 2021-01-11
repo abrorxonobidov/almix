@@ -59,6 +59,9 @@ use yii\bootstrap\Tabs;
 
     <? $anonsConfig = $model->inputImageConfig('gallery', Url::to(['lists/file-remove']), Lists::class); ?>
 
+
+    <? $galleyConfig = $model->inputGalleryConfig(); ?>
+
     <?= $form->field($model, 'helpGallery[]')
         ->widget(FileInput::class, [
             'options' => [
@@ -68,14 +71,15 @@ use yii\bootstrap\Tabs;
             'pluginOptions' => [
                 'previewFileType' => 'image',
                 'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg'],
-                'initialPreview' => $anonsConfig['path'],
+                'initialPreview' => $galleyConfig['path'],
                 'initialPreviewAsData' => true,
-                'initialPreviewConfig' => $anonsConfig['config'],
+                'initialPreviewConfig' => $galleyConfig['config'],
                 'showUpload' => false,
-                'showRemove' => true,
+                'showRemove' => false,
                 'browseClass' => 'btn btn-success',
                 'browseLabel' => Html::icon('folder-open'). '&nbsp;Tanlang...',
                 'browseIcon' => '',
+                'overwriteInitial' => false,
             ]
         ]);
     ?>

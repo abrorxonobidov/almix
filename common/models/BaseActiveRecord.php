@@ -15,6 +15,7 @@ use yii\db\ActiveQuery;
 use yii\helpers\Html;
 use yii\db\ActiveRecord;
 use yii\helpers\Url;
+use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 
 /**
@@ -183,8 +184,7 @@ class BaseActiveRecord extends ActiveRecord
     public function getCreated()
     {
         return $this->hasOne(Log::class, ['row_id' => 'id'])
-            ->onCondition(['table_name' => $this::tableName(), 'action_id' => Log::ACTION_INSERT])
-            ;
+            ->onCondition(['table_name' => $this::tableName(), 'action_id' => Log::ACTION_INSERT]);
     }
 
 
@@ -252,6 +252,30 @@ class BaseActiveRecord extends ActiveRecord
                     $resize->saveImage($imagePath,80);
                 }
             }*/
+        }
+    }
+
+
+    /**
+     * @param string $fileInput
+     * @param string $field
+     * @param string $table
+     * @throws NotFoundHttpException
+     */
+    public function uploadGallery($fileInput, $field, $table = '')
+    {
+        $images = UploadedFile::getInstances($this, $fileInput);
+        if ($images) {
+            if (!$this->isNewRecord && !empty($this->$field))
+                self::deleteDir(self::uploadImagePath() . $this->$field);
+            $folderName = self::createGuid() . '_' . $table;
+            mkdir(self::uploadImagePath() . $folderName);
+            $this->$field = $folderName;
+            foreach ($images as $image) {
+                $imageName = self::createGuid() . '_' . $table . '.' . $image->getExtension();
+                $imagePath = self::uploadImagePath() . $folderName . '/' . $imageName;
+                $image->saveAs($imagePath);
+            }
         }
     }
 
@@ -341,6 +365,30 @@ class BaseActiveRecord extends ActiveRecord
     public function getDescriptionLang()
     {
         return $this->{'description_' . Yii::$app->language};
+    }
+
+
+    /**
+     * @param $dirPath
+     * @throws NotFoundHttpException
+     */
+    public static function deleteDir($dirPath)
+    {
+        if (!is_dir($dirPath)) {
+            throw new NotFoundHttpException("$dirPath must be a directory");
+        }
+        if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
+            $dirPath .= '/';
+        }
+        $files = glob($dirPath . '*', GLOB_MARK);
+        foreach ($files as $file) {
+            if (is_dir($file)) {
+                self::deleteDir($file);
+            } else {
+                unlink($file);
+            }
+        }
+        rmdir($dirPath);
     }
 
 }
