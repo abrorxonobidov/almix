@@ -7,13 +7,12 @@ use common\models\BaseActiveRecord;
 use Yii;
 use common\models\Lists;
 use backend\models\ListsSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * ListsController implements the CRUD actions for Lists model.
  */
-class ListsController extends Controller
+class ListsController extends BaseController
 {
 
     /**
