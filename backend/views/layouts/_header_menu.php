@@ -28,7 +28,7 @@ if (Yii::$app->user->isGuest) {
 } else {
 
     $menuItems = [
-        ['label' => 'Home', 'url' => ['site/index']],
+        ['label' => 'Asosiy', 'url' => ['site/index']],
     ];
 
     foreach (ListCategorySearch::getMainCats() as $category)
@@ -60,7 +60,7 @@ if (Yii::$app->user->isGuest) {
         'encode' => false
     ];
     $menuItems[] = [
-        'label' => 'Ketegoriyalar',
+        'label' => 'Kategoriyalar',
         'url' => ['list-category/index']
     ];
     $menuItems[] =

@@ -5,12 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Lists */
 
-$this->title = Yii::t('main', 'Update Lists: {name}', [
+$this->title = Yii::t('main', 'Tahrirlash: {name}', [
     'name' => $model->id,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Lists'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Roʻyxat'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('main', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('main', 'Tahrirlash');
 ?>
 <div class="lists-update">
 

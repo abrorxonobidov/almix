@@ -47,13 +47,15 @@ class ListsController extends Controller
     /**
      * Creates a new Lists model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     * @param int $cat_id
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException
      */
-    public function actionCreate()
+    public function actionCreate($cat_id = null)
     {
         $model = new Lists();
-
+        $model->order = 500;
+        $model->category_id = $cat_id;
         if ($model->load(Yii::$app->request->post())) {
             $model->uploadImage('helpImage', 'preview_image', 'lists');
             $model->uploadGallery('helpGallery', 'gallery', 'lists');
