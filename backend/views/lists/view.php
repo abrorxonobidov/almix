@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'category_id',
+            'category.titleLang',
             'title_uz',
             'title_ru',
             'title_en',

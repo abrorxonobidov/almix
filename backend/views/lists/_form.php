@@ -1,6 +1,6 @@
 <?php
 
-use yii\helpers\Html;
+use yii\bootstrap\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
 use common\models\Lists;
@@ -39,9 +39,6 @@ use yii\bootstrap\Tabs;
         </div>
     </div>
 
-    <?= $form->field($model, 'preview_image')
-        ->textInput(['maxlength' => true]); ?>
-
     <? $anonsConfig = $model->inputImageConfig('preview_image', Url::to(['lists/file-remove']), Lists::class); ?>
     <?= $form->field($model, 'helpImage')
         ->widget(FileInput::class, [
@@ -55,7 +52,7 @@ use yii\bootstrap\Tabs;
                 'showUpload' => false,
                 'showRemove' => false,
                 'browseClass' => 'btn btn-success',
-                'browseLabel' => '<span class="glyphicon glyphicon-folder-open"></span>&nbsp;Tanlang...',
+                'browseLabel' => Html::icon('folder-open'). '&nbsp;Tanlang...',
                 'browseIcon' => ''
             ]
         ]); ?>
@@ -77,12 +74,13 @@ use yii\bootstrap\Tabs;
                 'showUpload' => false,
                 'showRemove' => true,
                 'browseClass' => 'btn btn-success',
-                'browseLabel' => '<span class="glyphicon glyphicon-folder-open"></span>&nbsp;Tanlang...',
+                'browseLabel' => Html::icon('folder-open'). '&nbsp;Tanlang...',
                 'browseIcon' => '',
             ]
         ]);
     ?>
 
+    <br>
 
     <?
     $items = [];
@@ -129,14 +127,10 @@ use yii\bootstrap\Tabs;
                                 ['name' => 'styles', 'items' => ['Format', 'FontSize']]
                             ],
                         ],
-
-
                     ]),
         ];
 
-    echo Tabs::widget([
-        'items' => $items
-    ])
+    echo Tabs::widget(['items' => $items])
 
     ?>
 

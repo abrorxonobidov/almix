@@ -58,6 +58,7 @@ class Lists extends BaseActiveRecord
     {
         return parent::attributeLabels() + [
             'category_id' => Yii::t('main', 'Kategoriya ID'),
+            'category.titleLang' => Yii::t('main', 'Kategoriya'),
             'preview_image' => Yii::t('main', 'Izoh rasmi'),
             'gallery' => Yii::t('main', 'Gallery'),
             'helpGallery' => Yii::t('main', 'Gallery'),
