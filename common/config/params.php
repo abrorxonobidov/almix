@@ -9,7 +9,12 @@ return [
     'languages' => [
         'uz' => 'Oʻzbek',
         'ru' => 'Русский',
-        'en' => 'English',
+        'en' => 'English'
+    ],
+    'languagesShort' => [
+        'uz' => 'Oʻz',
+        'ru' => 'Ру',
+        'en' => 'En'
     ],
     'cacheDurationMax' => 1800, //seconds = 30 minute
     'cacheDurationNormal' => 300, //seconds = 5 minute

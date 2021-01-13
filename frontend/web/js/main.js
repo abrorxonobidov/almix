@@ -1,15 +1,6 @@
-function popupWindow(url, title, w, h) {
-    if (url.length == 0){
-        url = document.location.href;
-    }
-    var left = (screen.width/2)-(w/2);
-    var top = (screen.height/2)-(h/2);
-    return window.open(url, title, 'toolbar=yes, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
-}
-
 $(document).ready(function () {
 
-    $('a[href^="#"]').on("click", function(event) {
+    $('a[href^="#"]').on("click", function (event) {
         event.preventDefault();
     });
 
@@ -23,6 +14,66 @@ $(document).ready(function () {
     }, function () {
         $(this).removeClass('open');
     });
+
+    $(document).ready(function () {
+
+        // makeMap({
+        //     an: {
+        //         // image: "",
+        //         title: "Андижанская область",
+        //         address: 'Фамилия Имя Отчество',
+        //     },
+        //     bu: {
+        //         // image: "",
+        //         title: "Бухарская область",
+        //         address: 'Фамилия Имя Отчество',
+        //     },
+        //     tosh: {
+        //         // image: "",
+        //         title: "город Ташкент",
+        //         address: 'Фамилия Имя Отчество'
+        //     }
+        // });
+
+        $("#actual_news_slider").owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 7000,
+            nav: true,
+            animateOut: 'fadeOut',
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            },
+            navigation: true,
+            pagination: true
+        });
+        let swiper2 = new Swiper('.swiper-container_two', {
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 20,
+            breakpoints: {
+                '350': {
+                    spaceBetween: 20,
+                },
+            },
+        });
+        let grid = $('.grid').imagesLoaded(function () {
+            grid.masonry({
+                itemSelector: '.grid-item',
+                percentPosition: true,
+                columnWidth: '.grid-sizer'
+            });
+        });
+    });
+
 
 });
 
