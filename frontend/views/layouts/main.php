@@ -7,73 +7,29 @@
 
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
-<?php $this->beginPage() ?>
+<? $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php $this->registerCsrfMetaTags() ?>
+    <? $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
+    <? $this->head() ?>
 </head>
 <body>
-<?php $this->beginBody() ?>
+<? $this->beginBody() ?>
 
 <div class="wrapper">
     <section class="block_first">
         <button type="button" class="b_left_menu"><img src="/img/humburger.png" alt=""/></button>
-        <ul class="lang">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                   aria-expanded="false">РУ<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">ЎЗ</a></li>
-                    <li><a href="#">O`z</a></li>
-                    <li><a href="#">Eng</a></li>
-                </ul>
-            </li>
-        </ul>
-        <div class="container h_width">
-            <div class="header">
-                <div class="head_menu">
-                    <nav class="navbar">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                    data-target="#bs-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="collapse navbar-collapse nopade" id="bs-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-haspopup="true" aria-expanded="false">Bosh sahifa<span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Пункт 1</a></li>
-                                        <li><a href="#">Пункт 2</a></li>
-                                        <li><a href="#">Пункт 3</a></li>
-                                    </ul>
-                                </li>
-                                <li class="active"><a href="#">Media</a></li>
-                                <li><a href="#">Kompaniya haqida</a></li>
-                                <li><a href="#"><img src="/img/logo_almix.png" alt=""/></a></li>
-                                <li><a href="#">Mahsulotlar</a></li>
-                                <li><a href="#">Xizmatlar</a></li>
-                                <li><a href="#">Bog‘lanish</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        <?= \frontend\widgets\LangSwitcherWidget::widget() ?>
+        <?= \frontend\widgets\MenuWidget::widget() ?>
     </section>
 
     <?= $content ?>
@@ -140,14 +96,14 @@ AppAsset::register($this);
                     </div>
                 </div>
             </div>
-            <a href="#" class="footer_logo"><img src="/img/footer_logo.png" alt=""/></a>
+            <a href="<?= Url::to(['site/index']) ?>" class="footer_logo"><img src="/img/footer_logo.png" alt=""/></a>
         </div>
     </section>
 
 
 </div>
 
-<?php $this->endBody() ?>
+<? $this->endBody() ?>
 </body>
 </html>
-<?php $this->endPage() ?>
+<? $this->endPage() ?>
