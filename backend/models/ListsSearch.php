@@ -17,7 +17,7 @@ class ListsSearch extends Lists
     public function rules()
     {
         return [
-            [['id', 'category_id', 'order', 'status'], 'integer'],
+            [['id', 'category_id', 'order', 'status', 'region_id'], 'integer'],
             [['title_uz', 'title_ru', 'title_en', 'preview_uz', 'preview_ru', 'preview_en', 'description_uz', 'description_ru', 'description_en', 'preview_image', 'gallery'], 'safe'],
         ];
     }
@@ -42,26 +42,21 @@ class ListsSearch extends Lists
     {
         $query = Lists::find();
 
-        // add conditions that should always apply here
-
         $dataProvider = new ActiveDataProvider([
-            'query' => $query,
+            'query' => $query
         ]);
 
         $this->load($params);
 
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+        if (!$this->validate())
             return $dataProvider;
-        }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'category_id' => $this->category_id,
             'order' => $this->order,
-            'status' => $this->status
+            'status' => $this->status,
+            'region_id' => $this->region_id,
         ]);
 
         $query

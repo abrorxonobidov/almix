@@ -4,13 +4,12 @@ namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\ListCategory;
-use Yii;
+use common\models\Regions;
 
 /**
- * ListCategorySearch represents the model behind the search form of `common\models\ListCategory`.
+ * RegionsSearch represents the model behind the search form of `common\models\Regions`.
  */
-class ListCategorySearch extends ListCategory
+class RegionsSearch extends Regions
 {
     /**
      * {@inheritdoc}
@@ -18,8 +17,8 @@ class ListCategorySearch extends ListCategory
     public function rules()
     {
         return [
-            [['id', 'parent_id', 'type_id'], 'integer'],
-            [['title_uz', 'title_ru', 'title_en', 'image'], 'safe'],
+            [['id', 'parent_id', 'order', 'status'], 'integer'],
+            [['title_uz', 'title_ru', 'title_en', 'code'], 'safe'],
         ];
     }
 
@@ -41,7 +40,7 @@ class ListCategorySearch extends ListCategory
      */
     public function search($params)
     {
-        $query = ListCategory::find();
+        $query = Regions::find();
 
         // add conditions that should always apply here
 
@@ -61,36 +60,15 @@ class ListCategorySearch extends ListCategory
         $query->andFilterWhere([
             'id' => $this->id,
             'parent_id' => $this->parent_id,
-            'type_id' => $this->type_id,
+            'order' => $this->order,
+            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'title_uz', $this->title_uz])
             ->andFilterWhere(['like', 'title_ru', $this->title_ru])
             ->andFilterWhere(['like', 'title_en', $this->title_en])
-            ->andFilterWhere(['like', 'image', $this->image]);
+            ->andFilterWhere(['like', 'code', $this->code]);
 
         return $dataProvider;
     }
-
-    /**
-     * @return array|ListCategory[]
-     */
-    public static function getMainCats()
-    {
-        return ListCategory::find()
-            ->where(['IN', 'id', [1, 2, 4, 5]])
-            ->all();
-    }
-
-    /**
-     * @return array|ListCategory[]
-     */
-    public static function getOtherCats()
-    {
-        return ListCategory::find()
-            ->where(['NOT IN', 'id', [1, 2, 4, 5]])
-            ->all();
-    }
-
-
 }

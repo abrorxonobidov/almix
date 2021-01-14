@@ -23,6 +23,7 @@ use yii\helpers\Url;
  * @property string|null $gallery
  * @property int|null $order
  * @property int|null $status
+ * @property int|null $region_id
  *
  * @property ListCategory $category
  */
@@ -43,10 +44,11 @@ class Lists extends BaseActiveRecord
     {
         return [
             [['category_id', 'title_uz'], 'required'],
-            [['category_id', 'order', 'status'], 'integer'],
+            [['category_id', 'order', 'status', 'region_id'], 'integer'],
             [['description_uz', 'description_ru', 'description_en'], 'string'],
             [['title_uz', 'title_ru', 'title_en', 'preview_uz', 'preview_ru', 'preview_en', 'preview_image', 'gallery'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ListCategory::class, 'targetAttribute' => ['category_id' => 'id']],
+            [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Regions::class, 'targetAttribute' => ['region_id' => 'id']],
             [['order'], 'default', 'value' => 500],
             [['status'], 'default', 'value' => 1],
         ];
@@ -63,6 +65,7 @@ class Lists extends BaseActiveRecord
             'preview_image' => Yii::t('main', 'Izoh rasmi'),
             'gallery' => Yii::t('main', 'Gallery'),
             'helpGallery' => Yii::t('main', 'Gallery'),
+            'region_id' => Yii::t('main', 'Viloyat'),
         ];
     }
 
@@ -74,6 +77,17 @@ class Lists extends BaseActiveRecord
     public function getCategory()
     {
         return $this->hasOne(ListCategory::class, ['id' => 'category_id']);
+    }
+
+
+    /**
+     * Gets query for [[Regions]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRegion()
+    {
+        return $this->hasOne(Regions::class, ['id' => 'region_id']);
     }
 
     /**

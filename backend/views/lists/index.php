@@ -2,10 +2,10 @@
 
 use yii\bootstrap\Html;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
 use yii\helpers\ArrayHelper;
 use common\models\ListCategory;
 use common\models\Lists;
+use common\models\Regions;
 
 /**
  * @var $this yii\web\View
@@ -77,6 +77,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'col-md-1'
                 ],
                 'filter' => $searchModel->getStatusListKeyAndTitle()
+            ],
+            [
+                'attribute' => 'region_id',
+                'value' => 'region.titleLang',
+                'filter' => ArrayHelper::map(
+                    Regions::findAll(['status' => 1]),
+                    'id',
+                    'title_uz'
+                )
             ],
             [
                 'class' => 'yii\grid\ActionColumn',

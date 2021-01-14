@@ -1,10 +1,14 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Lists;
+use common\models\Regions;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\helpers\Html;
+use yii\helpers\Json;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -257,5 +261,42 @@ class SiteController extends Controller
         return $this->render('resendVerificationEmail', [
             'model' => $model
         ]);
+    }
+
+    public function actionRegionsList()
+    {
+        $regs = Regions::find()
+            ->alias('r')
+            ->select([
+                'id' => 'l.id',
+                'l.region_id',
+                'list_title' => 'l.title_' . Yii::$app->language,
+                'l.preview_' . Yii::$app->language,
+                'l.preview_image',
+                'region_title' => 'r.title_' . Yii::$app->language,
+                'r.code'
+            ])
+            ->innerJoin(['l' => Lists::tableName()], 'r.id = l.region_id')
+            ->where([
+                'l.category_id' => 12
+            ])
+            ->andWhere('l.region_id > 0')
+            ->asArray()
+            ->all();
+        $data = [];
+
+        if ($regs) {
+
+            foreach ($regs as $reg) {
+                $data[$reg['code']]['image'] = Html::img('@web/uploads/' .$reg['preview_image']);
+                $data[$reg['code']]['title'] = $reg['region_title'];
+                $data[$reg['code']]['address'] = @$data[$reg['code']]['address'] ?  $data[$reg['code']]['address'].', '.$reg['list_title'] : $reg['list_title'];
+                $data[$reg['code']]['code'] = $reg['code'];
+            }
+
+        }
+
+
+        return Json::encode($data);
     }
 }

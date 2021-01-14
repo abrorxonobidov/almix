@@ -393,5 +393,21 @@ class BaseActiveRecord extends ActiveRecord
         rmdir($dirPath);
     }
 
+
+    public static function getForDropDown()
+    {
+        $cats = self::find()
+            ->select([
+                'id',
+                'title' => 'title_' . Yii::$app->language
+            ])
+            ->asArray()
+            ->all();
+        $res = [];
+        foreach ($cats as $cat)
+            $res[$cat['id']] = $cat['title'];
+        return $res;
+    }
+
 }
 

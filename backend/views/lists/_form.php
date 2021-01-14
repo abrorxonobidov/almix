@@ -8,6 +8,7 @@ use kartik\file\FileInput;
 use kartik\select2\Select2;
 use common\models\ListCategorySearch;
 use yii\bootstrap\Tabs;
+use common\models\RegionsSearch;
 
 /**
  * @var $this yii\web\View
@@ -21,7 +22,7 @@ use yii\bootstrap\Tabs;
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <?= $form->field($model, 'category_id')
                 ->widget(Select2::class, [
                     'data' => ListCategorySearch::getForDropDown(),
@@ -31,10 +32,20 @@ use yii\bootstrap\Tabs;
                     ],
                 ]) ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
+            <?= $form->field($model, 'region_id')
+                ->widget(Select2::class, [
+                    'data' => RegionsSearch::getForDropDown(),
+                    'pluginOptions' => [
+                        'allowClear' => true,
+                        'placeholder' => $model->getAttributeLabel('region_id')
+                    ],
+                ]) ?>
+        </div>
+        <div class="col-md-3">
             <?= $form->field($model, 'order')->textInput() ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <?= $form->field($model, 'status')->dropDownList($model::getStatusListKeyAndTitle()) ?>
         </div>
     </div>

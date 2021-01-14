@@ -30,26 +30,16 @@ $(document).ready(function () {
 
     $(document).ready(function () {
 
-        makeMap({
-            no: {
-                image: '<img src="img/navoiy_reg.png" alt="" />',
-                title: "Navoiy viloyati",
-                address: 'Navoiy shahri, Bog`ishamol ko`chasi',
-                modal: '',
-            },
-            bu: {
-                image: '<img src="img/video_img.png" alt="" />',
-                title: "Buxoro viloyati",
-                address: 'Buxaro shahri, G`allaorol ko`chasi',
-                modal: '',
-            },
-            tosh: {
-                image: '<img src="img/swiper_slider_img5.jpg" alt="" />',
-                title: "город Ташкент",
-                address: 'Фамилия Имя Отчество',
-                modal: '',
-            }
+        $.ajax({
+            url: $('html').attr('lang') + '/site/regions-list',
+            success: res => makeMap(JSON.parse(res)),
+            error: res => console.log(res),
         });
+
+        //$('#region-modal').on('shown.bs.modal', (e) => {
+        //    $(this).find('.modal-body').html('Kamola')
+        //});
+
 
         $("#actual_news_slider").owlCarousel({
             loop: true,
