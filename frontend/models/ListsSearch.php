@@ -43,8 +43,6 @@ class ListsSearch extends Lists
         $query = Lists::find()
             ->active();
 
-        // add conditions that should always apply here
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [

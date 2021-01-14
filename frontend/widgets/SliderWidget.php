@@ -24,6 +24,8 @@ class SliderWidget extends Widget
         $searchModel = new ListsSearch();
         $searchModel['category_id'] = 13;
         $dataProvider = $searchModel->search([]);
+        $dataProvider->pagination->pageSize = 6;
+        $dataProvider->pagination->page = 0;
 
         return
             Html::beginTag('section', ['class' => 'block_second'])

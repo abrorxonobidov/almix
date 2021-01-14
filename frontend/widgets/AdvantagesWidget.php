@@ -9,12 +9,20 @@
 namespace frontend\widgets;
 
 
+use frontend\models\ListsSearch;
 use yii\base\Widget;
 
 class AdvantagesWidget extends Widget
 {
     public function run()
     {
-        return $this->render('advantagesView');
+        $searchModel = new ListsSearch();
+        $searchModel['category_id'] = 6;
+        $dataProvider = $searchModel->search([]);
+        $dataProvider->pagination->pageSize = 8;
+        $dataProvider->pagination->page = 0;
+        return $this->render('advantagesView', [
+            'dataProvider' => $dataProvider
+        ]);
     }
 }

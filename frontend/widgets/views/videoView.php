@@ -5,23 +5,35 @@
  * Date: 14.01.2021
  * Time: 16:26
  */
+
+use yii\bootstrap\Html;
+
+/**
+ * @var $video \common\models\Lists
+ */
+
+$files = glob($video::uploadImagePath() . $video->gallery . "/{*.mp4}", GLOB_BRACE);
+$filePath = explode('/', $files[0]);
+$fileName = end($filePath);
 ?>
 
 <section class="block_fourth">
     <div class="container h_width">
         <div class="video_b">
             <div class="col-lg-6">
-                <span class="title">Yuqori sifatli allumin maxsulotlari</span>
+                <span class="title">
+                    <?= $video->titleLang ?>
+                </span>
                 <p class="product_text">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                    voluptua. At vero eos et accusam et justo duo dolores et.
+                    <?= $video->previewLang ?>
                 </p>
             </div>
             <div class="col-lg-6">
                 <div class="video_box">
-                    <a data-fancybox="images" href="/img/video_prikol.mp4">
-                        <span><img src="/img/video_img.png" alt="video"></span>
+                    <a data-fancybox="images" href="<?= "/uploads/$video->gallery/$fileName" ?>">
+                        <span>
+                            <?= Html::img("@web/uploads/$video->preview_image") ?>
+                        </span>
                     </a>
                 </div>
             </div>

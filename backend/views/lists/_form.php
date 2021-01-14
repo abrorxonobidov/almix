@@ -69,8 +69,8 @@ use yii\bootstrap\Tabs;
                 'multiple' => true
             ],
             'pluginOptions' => [
-                'previewFileType' => 'image',
-                'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg'],
+                //'previewFileType' => 'image',
+                'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg', 'mp4'],
                 'initialPreview' => $galleyConfig['path'],
                 'initialPreviewAsData' => true,
                 'initialPreviewConfig' => $galleyConfig['config'],

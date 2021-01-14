@@ -9,12 +9,19 @@
 namespace frontend\widgets;
 
 
+use common\models\Lists;
 use yii\base\Widget;
 
 class VideoWidget extends Widget
 {
     public function run()
     {
-        return $this->render('videoView');
+        return $this->render('videoView', [
+            'video' => Lists::find()
+                ->where(['category_id' => 9])
+                ->orderBy(['order' => SORT_DESC])
+                ->active()
+                ->one()
+        ]);
     }
 }

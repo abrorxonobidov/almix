@@ -37,9 +37,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'preview_uz',
             'preview_ru',
             'preview_en',
-            'description_uz:html',
-            'description_ru:html',
-            'description_en:html',
+            'description_uz:raw',
+            'description_ru:raw',
+            'description_en:raw',
             [
                 'attribute' => 'preview_image',
                 'value' => Html::img($model::imageSourcePath() . $model->preview_image, ['class' => 'col-md-4'])

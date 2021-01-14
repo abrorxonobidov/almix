@@ -21,6 +21,8 @@ use yii\web\UploadedFile;
 /**
  * @property integer $id
  * @property string $titleLang
+ * @property string $previewLang
+ * @property string $descriptionLang
  * @property string $helpImage
  * @property integer $status
  *
