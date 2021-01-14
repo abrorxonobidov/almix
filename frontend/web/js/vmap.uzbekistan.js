@@ -1,7 +1,3 @@
-/**
- * Created by a_mirvosiqov on 10.11.2014.
- */
-
 $.fn.vectorMap('addMap', 'uzbekistan', {
     "pathes": {
         "an": {

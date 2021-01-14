@@ -1,11 +1,4 @@
 $(document).ready(function () {
-    $('#vmap').css(
-        {
-            'width': '658px',
-            'height': '583px'
-        }
-    );
-
     $('.mapPoints a').click(function(e){
         e.preventDefault();
         $('#mapLabels').toggleClass('open');
@@ -16,32 +9,10 @@ $(document).ready(function () {
     }, function(){
         filterRegions('');
     });
-    $(window).click(function(e){
-        // if(e.target.className.animVal != "jvectormap-region"){
-        //     //console.log(e.target.className.animVal);
-        //     $('#mapLabels').html('');
-        // }
-    });
 });
 
-var regions = {
-    to: 0,
-    qo: 0,
-    an: 0,
-    bu: 0,
-    qa: 0,
-    no: 0,
-    gu: 0,
-    sa: 0,
-    fa: 0,
-    ji: 0,
-    na: 0,
-    te: 0,
-    xo: 0
-};
-
 function makeMap(details, colors) {
-    showMapInfo(details['bu']);
+    showMapInfo(details['no']);
     $('#vmap').html('');
     $('.jqvmap-label').remove();
     $('#vmap').vectorMap({
@@ -52,14 +23,14 @@ function makeMap(details, colors) {
         selectedColor: '#00ccff',
         enableZoom: false,
         showTooltip: false,
-        borderColor: '#74bdd0',
-        borderWidth: 2,
-        borderOpacity: 2,
+        borderColor: '#86c8d9',
+        borderWidth: 1,
+        borderOpacity: 1,
         onRegionClick: function (element, code, region) {
             showMapInfo(details[code]);
         },
     });
-    var current_code = "bu";
+    var current_code = "no";
     $("#jqvmap1_"+current_code).attr("fill", "#00ccff");
 }
 
@@ -68,9 +39,11 @@ function showMapInfo(regionInfo) {
     if (typeof(item) !== 'undefined') {
 
         var template = ''+
-            '<div class="reg_image">'+item['image']+'</div>'+
-            '<div class="region_name">'+item['title']+'</div>'+
-            '<div class="reg_address">'+item['address']+'</div>'+
+            '<div>'+
+                '<div class="reg_image"><span class="reg_image_in">'+item['image']+'</span><span class="modal_zoom" data-toggle="modal" data-target="#myModal"></span></div>'+
+                '<div class="region_name">'+item['title']+'</div>'+
+                '<div class="reg_address">Manzil: '+item['address']+'</div>'+
+            '</div>';
         $('#mapLabels').html(template);
     } else {
         $('#mapLabels').html(`<h1>Topilmadi</h1>`);

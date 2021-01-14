@@ -10,7 +10,7 @@ use yii\helpers\Url;
 ?>
 <div class="container h_width">
     <div class="header">
-        <div class="head_menu">
+        <div class="head_menu" id="headMenu">
             <nav class="navbar">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"

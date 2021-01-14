@@ -12,7 +12,8 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/bootstrap.min.css',
+        'css/jqvmap.css',
+        //'css/bootstrap.min.css',
         'css/jquery-ui.css',
         'css/style.css',
         'css/swiper-bundle.min.css',
@@ -27,6 +28,9 @@ class AppAsset extends AssetBundle
         'js/owl.carousel.min.js',
         'js/jquery-ui.js',
         'js/fancybox.min.js',
+        'js/jquery.vmap.js',
+        'js/vmap.uzbekistan.js',
+        'js/map.js',
         'js/masonry.pkgd.js',
         'js/imagesLoaded.pkgd.js',
         'js/main.js',

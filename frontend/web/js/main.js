@@ -1,3 +1,16 @@
+
+window.onscroll = function() {myFunction()};
+
+let header = document.getElementById("headMenu");
+let headMenuFixed = header.offsetTop;
+function myFunction() {
+    if (window.pageYOffset >= headMenuFixed) {
+        header.classList.add("headMenuFixed");
+    } else {
+        header.classList.remove("headMenuFixed");
+    }
+}
+
 $(document).ready(function () {
 
     $('a[href^="#"]').on("click", function (event) {
@@ -17,23 +30,26 @@ $(document).ready(function () {
 
     $(document).ready(function () {
 
-        // makeMap({
-        //     an: {
-        //         // image: "",
-        //         title: "Андижанская область",
-        //         address: 'Фамилия Имя Отчество',
-        //     },
-        //     bu: {
-        //         // image: "",
-        //         title: "Бухарская область",
-        //         address: 'Фамилия Имя Отчество',
-        //     },
-        //     tosh: {
-        //         // image: "",
-        //         title: "город Ташкент",
-        //         address: 'Фамилия Имя Отчество'
-        //     }
-        // });
+        makeMap({
+            no: {
+                image: '<img src="img/navoiy_reg.png" alt="" />',
+                title: "Navoiy viloyati",
+                address: 'Navoiy shahri, Bog`ishamol ko`chasi',
+                modal: '',
+            },
+            bu: {
+                image: '<img src="img/video_img.png" alt="" />',
+                title: "Buxoro viloyati",
+                address: 'Buxaro shahri, G`allaorol ko`chasi',
+                modal: '',
+            },
+            tosh: {
+                image: '<img src="img/swiper_slider_img5.jpg" alt="" />',
+                title: "город Ташкент",
+                address: 'Фамилия Имя Отчество',
+                modal: '',
+            }
+        });
 
         $("#actual_news_slider").owlCarousel({
             loop: true,
@@ -55,14 +71,26 @@ $(document).ready(function () {
             navigation: true,
             pagination: true
         });
-        let swiper2 = new Swiper('.swiper-container_two', {
+        var swiper2 = new Swiper('.swiper-container_two', {
             slidesPerView: 'auto',
             centeredSlides: true,
             spaceBetween: 20,
             breakpoints: {
+                '991': {
+                    slidesPerView: 2,
+                    spaceBetween: 20, },
+                '767': {
+                    slidesPerView: 2,
+                    spaceBetween: 20, },
+                '500': {
+                    slidesPerView: 1,
+                    spaceBetween: 20, },
                 '350': {
-                    spaceBetween: 20,
-                },
+                    slidesPerView: 1,
+                    spaceBetween: 20, },
+                '300': {
+                    slidesPerView: 1,
+                    spaceBetween: 20, },
             },
         });
         let grid = $('.grid').imagesLoaded(function () {
