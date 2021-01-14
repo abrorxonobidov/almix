@@ -79,7 +79,6 @@ class ListCategorySearch extends ListCategory
     {
         return ListCategory::find()
             ->where(['IN', 'id', [1, 2, 4, 5]])
-            ->cache(Yii::$app->params['cacheDurationNormal'])
             ->all();
     }
 
@@ -90,7 +89,6 @@ class ListCategorySearch extends ListCategory
     {
         return ListCategory::find()
             ->where(['NOT IN', 'id', [1, 2, 4, 5]])
-            ->cache(Yii::$app->params['cacheDurationNormal'])
             ->all();
     }
 
