@@ -9,12 +9,21 @@
 namespace frontend\widgets;
 
 
+use frontend\models\ListsSearch;
 use yii\base\Widget;
 
 class PhotoGalleryWidget extends Widget
 {
     public function run()
     {
-        return $this->render('photoGalleryView');
+        $searchModel = new ListsSearch();
+        $searchModel['category_id'] = 4;
+        $dataProvider = $searchModel->search([]);
+        $dataProvider->pagination->pageSize = 6;
+        $dataProvider->pagination->page = 0;
+
+        return $this->render('photo_gallery/photoGalleryView', [
+            'dataProvider' => $dataProvider
+        ]);
     }
 }

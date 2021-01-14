@@ -89,7 +89,7 @@ class ListCategoryController extends BaseController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($id)->setInactive();
 
         return $this->redirect(['index']);
     }

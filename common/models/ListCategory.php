@@ -98,4 +98,10 @@ class ListCategory extends BaseActiveRecord
     {
         return new ListCategoryQuery(get_called_class());
     }
+
+    public function setInactive()
+    {
+        $this->status = 0;
+        return $this->save(false);
+    }
 }

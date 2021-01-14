@@ -50,6 +50,10 @@ return [
                 '<controller>/<action>/<id:\d+>' => '<controller>/<action>'
             ]
         ],
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'nullDisplay' => '-'
+        ]
     ],
     'params' => $params,
 ];
