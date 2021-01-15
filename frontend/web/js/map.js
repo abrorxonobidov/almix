@@ -66,15 +66,10 @@ showModal = data => {
     let modal = $('#region-modal');
     modal.modal('show');
     modal.find('.modal-title').html(data.title);
-
     $.ajax({
         url: $('html').attr('lang') + '/site/regions-code',
         data,
-        success: res => {
-            console.log(res)
-        },
+        success: res => modal.find('.modal-body').html(res),
         error: res => console.log(res),
     });
-
-    //modal.find('.modal-body').html(data.code)
 };

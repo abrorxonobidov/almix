@@ -28,7 +28,7 @@ class SiteController extends Controller
             [
                 'class' => ContentNegotiator::class,
                 'formats' => ['application/json' => 'json'],
-                'only' => ['regions-list', 'regions-code']
+                'only' => ['regions-list']
             ]
         ];
     }
@@ -92,21 +92,25 @@ class SiteController extends Controller
     public function actionRegionsCode($code)
     {
 
-        return
-            Lists::find()
-                ->alias('l')
-                ->select([
-                    'title' => 'l.title_' . Yii::$app->language,
-                    'preview' => 'l.preview_' . Yii::$app->language,
-                    'image' => 'l.preview_image'
-                ])
-                ->innerJoin(['r' => Regions::tableName()], 'r.id = l.region_id')
-                ->where([
-                    'l.category_id' => 12,
-                    'r.code' => $code,
-                    'l.status' => 1
-                ])
-                ->asArray()
-                ->all();
+        $lists = Lists::find()
+            ->alias('l')
+            ->select([
+                'id' => 'l.id',
+                'title' => 'l.title_' . Yii::$app->language,
+                'preview' => 'l.preview_' . Yii::$app->language,
+                'image' => 'l.preview_image'
+            ])
+            ->innerJoin(['r' => Regions::tableName()], 'r.id = l.region_id')
+            ->where([
+                'l.category_id' => 12,
+                'r.code' => $code,
+                'l.status' => 1
+            ])
+            ->asArray()
+            ->all();
+
+        return $this->renderPartial('regions_code', [
+            'lists' => $lists
+        ]);
     }
 }
