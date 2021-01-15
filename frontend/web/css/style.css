@@ -882,7 +882,7 @@ a.news_all_link:hover{
     height: 1189px;
     position: absolute;
     left: 50%;
-    bottom: -100px;
+    bottom: -530px; /** todo footer menu ko'ringanda -100px bo'lishi kerak*/
     transform: translateX(-50%);
 }
 .block_tenth:after{
