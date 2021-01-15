@@ -13,8 +13,8 @@ use common\models\Lists;
 /**
  * @var $dataProvider
  */
-Html::beginTag('section', ['class' => 'block_third']);
-Html::beginTag('div', ['class' => 'container h_width']);
+echo Html::beginTag('section', ['class' => 'block_third']);
+echo Html::beginTag('div', ['class' => 'container h_width']);
 echo Html::tag('span', Yii::t('main', 'Bizning korxonani tanlash uchun 8 ta asosiy sabab'), ['class' => 'title']);
 echo
 ListView::widget([
@@ -22,7 +22,7 @@ ListView::widget([
     'layout' => '{items}',
     'itemView' => function (Lists $list) {
         return
-            Html::tag('span', $list->description_uz, ['class' => 'round'])
+            Html::tag('span', Html::img('@web/uploads/' . $list->preview_image), ['class' => 'round'])
             .
             Html::a($list->titleLang, '#');
     },
@@ -34,5 +34,5 @@ ListView::widget([
         'class' => 'reasons_list'
     ]
 ]);
-Html::endTag('div');
-Html::endTag('section');
+echo Html::endTag('div');
+echo Html::endTag('section');
