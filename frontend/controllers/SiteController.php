@@ -4,11 +4,13 @@ namespace frontend\controllers;
 
 use common\models\Lists;
 use common\models\Regions;
+use frontend\models\ListsSearch;
 use Yii;
 use yii\filters\AjaxFilter;
 use yii\filters\ContentNegotiator;
 use yii\helpers\Html;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
@@ -113,4 +115,45 @@ class SiteController extends Controller
             'lists' => $lists
         ]);
     }
+
+    public function actionList($id = 2)
+    {
+        $searchModel = new ListsSearch();
+        $queryParams = Yii::$app->request->queryParams;
+        $queryParams['ListsSearch']['category_id'] = $id;
+        $dataProvider = $searchModel->search($queryParams);
+        return $this->render('list', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider
+        ]);
+    }
+
+
+    /**
+     * @param int $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionView($id = 2)
+    {
+        return $this->render('view', [
+            'list' => $this->findModel($id)
+        ]);
+    }
+
+
+    /**
+     * @param $id
+     * @return array|Lists|null
+     * @throws NotFoundHttpException
+     */
+    protected function findModel($id)
+    {
+        $list = Lists::find()->where(['id' => $id])->active()->one();
+        if ($list === null)
+            throw new NotFoundHttpException(Yii::t('main', 'Ma’lumot topilmadi'));
+        return $list;
+    }
+
+
 }

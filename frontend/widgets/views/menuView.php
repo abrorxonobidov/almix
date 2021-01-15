@@ -25,11 +25,11 @@ use yii\helpers\Url;
                 <div class="collapse navbar-collapse nopade" id="bs-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="<?= Url::to(['site/index'])?>"><?=Yii::t('main', 'Bosh sahifa')?></a></li>
-                        <li><a href="<?= Url::to(['site/products'])?>"><?=Yii::t('main', 'Mahsulotlar')?></a></li>
-                        <li><a href="<?= Url::to(['site/services'])?>"><?=Yii::t('main', 'Xizmatlar')?></a></li>
+                        <li><a href="<?= Url::to(['site/list', 'id' => 5])?>"><?=Yii::t('main', 'Mahsulotlar')?></a></li>
+                        <li><a href="<?= Url::to(['site/list', 'id' => 14])?>"><?=Yii::t('main', 'Xizmatlar')?></a></li>
                         <li class="mobile_logo"><a href="<?= Url::to(['site/index'])?>"><img src="/img/logo_almix.png" alt=""/></a></li>
-                        <li><a href="<?= Url::to(['site/media'])?>"><?=Yii::t('main', 'Media')?></a></li>
-                        <li><a href="<?= Url::to(['site/about'])?>"><?=Yii::t('main', 'Kompaniya haqida')?></a></li>
+                        <li><a href="<?= Url::to(['site/list', 'id' => 2])?>"><?=Yii::t('main', 'Media')?></a></li>
+                        <li><a href="<?= Url::to(['site/view', 'id' => 12])?>"><?=Yii::t('main', 'Kompaniya haqida')?></a></li>
                         <li><a href="<?= Url::to(['site/contacts'])?>"><?=Yii::t('main', 'Bog‘lanish')?></a></li>
                     </ul>
                 </div>

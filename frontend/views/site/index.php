@@ -13,6 +13,8 @@ $this->title = Yii::t('main', 'Bosh sahifa');
 
 <?=\frontend\widgets\PhotoGalleryWidget::widget()?>
 
+<?=\frontend\widgets\NewsWidget::widget()?>
+
 <?=\frontend\widgets\MapWidget::widget()?>
 
 <?=\frontend\widgets\PrincipleWidget::widget()?>

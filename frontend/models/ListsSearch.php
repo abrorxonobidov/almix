@@ -50,6 +50,9 @@ class ListsSearch extends Lists
                     'order' => SORT_DESC,
                     'id' => SORT_DESC
                 ]
+            ],
+            'pagination' => [
+                'pageSize' => 21
             ]
         ]);
 

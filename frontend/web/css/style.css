@@ -1030,7 +1030,9 @@ a.footer_logo{
 .pagination_b .pagination>li a>span{
     color: #FE6601;
 }
-.pagination_b .pagination>li>a{
+.pagination_b .pagination>li>a,
+.pagination_b .pagination>li>span
+{
     display: flex;
     align-items: center;
     justify-content: center;
