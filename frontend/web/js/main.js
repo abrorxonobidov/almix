@@ -32,14 +32,9 @@ $(document).ready(function () {
 
         $.ajax({
             url: $('html').attr('lang') + '/site/regions-list',
-            success: res => makeMap(JSON.parse(res)),
+            success: res => makeMap(res),
             error: res => console.log(res),
         });
-
-        //$('#region-modal').on('shown.bs.modal', (e) => {
-        //    $(this).find('.modal-body').html('Kamola')
-        //});
-
 
         $("#actual_news_slider").owlCarousel({
             loop: true,

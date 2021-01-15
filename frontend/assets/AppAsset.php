@@ -22,9 +22,9 @@ class AppAsset extends AssetBundle
         'css/fancybox.min.css',
     ];
     public $js = [
-        'js/jquery-3.5.1.min.js',
+        //'js/jquery-3.5.1.min.js',
         'js/swiper-bundle.min.js',
-        'js/bootstrap.min.js',
+        //'js/bootstrap.min.js',
         'js/owl.carousel.min.js',
         'js/jquery-ui.js',
         'js/fancybox.min.js',

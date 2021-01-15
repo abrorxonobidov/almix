@@ -42,11 +42,9 @@ showMapInfo = (item, code) => {
         });
         modalLink = $('<a />', {
             class: 'modal_zoom',
-            //'data-toggle': "modal",
-            //'data-target': "#region-modal",
-            //onclick: (code) => showModal(code),
+            'data-title': item['title'],
             'data-code': code
-        }).on('click', e => showModal($(e.target).data('code')));
+        }).on('click', e => showModal($(e.target).data()));
         regName = $('<div />', {
             class: 'region_name',
             html: item['title']
@@ -64,8 +62,19 @@ showMapInfo = (item, code) => {
     $('#mapLabels').html(htmlView);
 };
 
-showModal = code => {
-    console.log(code);
-    $('#region-modal').modal('show');
-    $('#region-modal').find('.modal-body').html(code)
+showModal = data => {
+    let modal = $('#region-modal');
+    modal.modal('show');
+    modal.find('.modal-title').html(data.title);
+
+    $.ajax({
+        url: $('html').attr('lang') + '/site/regions-code',
+        data,
+        success: res => {
+            console.log(res)
+        },
+        error: res => console.log(res),
+    });
+
+    //modal.find('.modal-body').html(data.code)
 };

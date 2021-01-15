@@ -10,6 +10,7 @@ use yii\helpers\Url;
 ?>
 <div class="container h_width">
     <div class="header">
+        <a href="#" class="header_mobile_logo"><img src="/img/logo_almix.png" alt="" /></a>
         <div class="head_menu" id="headMenu">
             <nav class="navbar">
                 <div class="navbar-header">
@@ -26,7 +27,7 @@ use yii\helpers\Url;
                         <li class="active"><a href="<?= Url::to(['site/index'])?>"><?=Yii::t('main', 'Bosh sahifa')?></a></li>
                         <li><a href="<?= Url::to(['site/products'])?>"><?=Yii::t('main', 'Mahsulotlar')?></a></li>
                         <li><a href="<?= Url::to(['site/services'])?>"><?=Yii::t('main', 'Xizmatlar')?></a></li>
-                        <li><a href="<?= Url::to(['site/index'])?>"><img src="/img/logo_almix.png" alt=""/></a></li>
+                        <li class="mobile_logo"><a href="<?= Url::to(['site/index'])?>"><img src="/img/logo_almix.png" alt=""/></a></li>
                         <li><a href="<?= Url::to(['site/media'])?>"><?=Yii::t('main', 'Media')?></a></li>
                         <li><a href="<?= Url::to(['site/about'])?>"><?=Yii::t('main', 'Kompaniya haqida')?></a></li>
                         <li><a href="<?= Url::to(['site/contacts'])?>"><?=Yii::t('main', 'Bog‘lanish')?></a></li>

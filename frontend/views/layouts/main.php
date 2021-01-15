@@ -98,6 +98,7 @@ AppAsset::register($this);
                 </div>
             </div>
             <a href="<?= Url::to(['site/index']) ?>" class="footer_logo"><img src="/img/footer_logo.png" alt=""/></a>
+            <p class="year_text">© <?= date('Y') ?></p>
         </div>
     </section>
 
