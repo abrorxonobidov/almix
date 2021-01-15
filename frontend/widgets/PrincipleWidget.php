@@ -9,6 +9,7 @@
 namespace frontend\widgets;
 
 
+use frontend\models\ListsSearch;
 use yii\base\Widget;
 
 class PrincipleWidget extends Widget
@@ -16,6 +17,13 @@ class PrincipleWidget extends Widget
 
     public function run()
     {
-        return $this->render('principleView');
+        $searchModel = new ListsSearch();
+        $searchModel['category_id'] = 10;
+        $dataProvider = $searchModel->search([]);
+        $dataProvider->pagination->pageSize = 6;
+        $dataProvider->pagination->page = 0;
+        return $this->render('principleView', [
+            'dataProvider' => $dataProvider
+        ]);
     }
 }

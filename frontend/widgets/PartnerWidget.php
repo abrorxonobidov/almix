@@ -9,6 +9,7 @@
 namespace frontend\widgets;
 
 
+use frontend\models\ListsSearch;
 use yii\base\Widget;
 
 class PartnerWidget extends Widget
@@ -16,6 +17,13 @@ class PartnerWidget extends Widget
 
     public function run()
     {
-        return $this->render('partnerView');
+        $searchModel = new ListsSearch();
+        $searchModel['category_id'] = 11;
+        $dataProvider = $searchModel->search([]);
+        $dataProvider->pagination->pageSize = 5;
+        $dataProvider->pagination->page = 0;
+        return $this->render('partnerView', [
+            'dataProvider' => $dataProvider
+        ]);
     }
 }
