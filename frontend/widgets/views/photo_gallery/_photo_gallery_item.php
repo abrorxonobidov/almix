@@ -11,9 +11,9 @@
  */
 
 $files = glob($model::uploadImagePath() . $model->gallery . "/{*.jpg,*.jpeg,*.gif,*.png}", GLOB_BRACE);
-$filePath_0 = explode('/', $files[0]);
+$filePath_0 = explode('/', @$files[0]);
 $fileName_0 = end($filePath_0);
-$filePath_1 = explode('/', $files[1]);
+$filePath_1 = explode('/', @$files[1]);
 $fileName_1 = end($filePath_1);
 
 ?>

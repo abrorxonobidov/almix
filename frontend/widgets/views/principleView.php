@@ -18,7 +18,7 @@ use common\models\Lists;
 
 <section class="block_eight">
     <div class="container h_width">
-        <?= Html::tag('span', 'Bizning prinsiplarimiz', ['class' => 'title']) ?>
+        <?= Html::tag('span', Yii::t('main', 'Bizning prinsiplarimiz'), ['class' => 'title']) ?>
         <?= ListView::widget([
             'dataProvider' => $dataProvider,
             'layout' => '{items}',

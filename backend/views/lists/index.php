@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'preview_image',
                 'value' => function (Lists $list) {
-                    return $list->preview_image ? Html::img('@frontend/web/uploads/' . $list->preview_image) : '';
+                    return $list->preview_image ? Html::img('http://almix.uz/uploads/' . $list->preview_image) : '';
                 },
                 'format' => 'raw'
             ],

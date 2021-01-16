@@ -38,12 +38,13 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => [
-            'class' => 'codemix\localeurls\UrlManager',
+            'class' => \codemix\localeurls\UrlManager::class,
             'enableDefaultLanguageUrlCode' => true,
             'enableLanguagePersistence' => false,
-            'languages' => ['uz', 'ru', 'en'],
+            'languages' => ['uz', 'ru'/*, 'en'*/],
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableLanguageDetection' => false,
             'rules' => [
                 '' => '/site/index',
                 'i/<id:\d+>' => 'site/list',

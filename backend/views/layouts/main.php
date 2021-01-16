@@ -33,7 +33,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?= $this->render('_header_menu') ?>
 
-    <div class="container">
+    <div class="container-fluid">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

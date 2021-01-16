@@ -108,6 +108,7 @@ class SiteController extends Controller
                 'r.code' => $code,
                 'l.status' => 1
             ])
+            ->orderBy(['l.order' => SORT_DESC])
             ->asArray()
             ->all();
 

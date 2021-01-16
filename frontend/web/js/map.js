@@ -66,6 +66,7 @@ showModal = data => {
     let modal = $('#region-modal');
     modal.modal('show');
     modal.find('.modal-title').html(data.title);
+    modal.find('.modal-body').html('<p class="text-center" style="font-size: 140px; color: #00cdff; margin-top:50px;"><span class="modal-region-spinner glyphicon glyphicon-refresh"></span></p>'),
     $.ajax({
         url: $('html').attr('lang') + '/site/regions-code',
         data,

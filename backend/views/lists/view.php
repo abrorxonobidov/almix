@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a($model->category->titleLang, ['index', 'ListsSearch[category_id]' => $model->category_id], ['class' => 'btn btn-default']) ?>
         <?= Html::a(Html::icon('plus'), ['create', 'cat_id' => $model->category_id], ['class' => 'btn btn-success pull-right']) ?>
     </p>
 

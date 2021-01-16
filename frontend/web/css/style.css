@@ -1134,3 +1134,22 @@ a.footer_logo{
     font-size: 24px;
     color: #2b385d;
 }
+
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+    width: 11px
+}
+
+::-webkit-scrollbar:horizontal {
+    width: 11px
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background-color: #00ccff;
+}
