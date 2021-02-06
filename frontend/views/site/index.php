@@ -7,7 +7,7 @@ $this->title = Yii::t('main', 'Bosh sahifa');
 
 <?=\frontend\widgets\SliderWidget::widget()?>
 
-<?=\frontend\widgets\AdvantagesWidget::widget()?>
+<?//=\frontend\widgets\AdvantagesWidget::widget()?>
 
 <?=\frontend\widgets\VideoWidget::widget()?>
 

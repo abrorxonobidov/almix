@@ -1153,3 +1153,12 @@ a.footer_logo{
     border-radius: 8px;
     background-color: #00ccff;
 }
+.site-error {
+    background: url(/img/error_image.png) no-repeat center center; height: 680px;
+}
+.site-error span{
+    padding: 100px 100px;
+    font-family: 'EngraversGothic';
+    color: #fe6601;
+    font-size: 37px;
+}

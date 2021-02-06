@@ -3,25 +3,27 @@
 /* @var $this yii\web\View */
 /* @var $name string */
 /* @var $message string */
+
 /* @var $exception Exception */
 
 use yii\helpers\Html;
 
-$this->title = $name;
+$this->title = $message;
 ?>
-<div class="site-error">
+<section class="block_sixth block_sixth_in">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="container h_width">
+        <div class="inner_title">
+            <span><?= Html::encode($this->title) ?></span>
+        </div>
+        <div class="site-error">
 
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
+            <span>
+                <?= nl2br(Html::encode($name)) ?>
+            </span>
+
+        </div>
+
+
     </div>
-
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
-
-</div>
+</section>

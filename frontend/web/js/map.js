@@ -20,6 +20,8 @@ makeMap = (details) => {
         borderOpacity: 1,
         onRegionClick: (element, code) => {
             showMapInfo(details[code], code);
+            if (details[code])
+                showModal({title: details[code]['title'], code: code});
         },
     });
     $("#jqvmap1_" + current_code).attr("fill", "#00ccff");

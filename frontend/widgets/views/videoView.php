@@ -30,11 +30,11 @@ $fileName = end($filePath);
             </div>
             <div class="col-lg-6">
                 <div class="video_box">
-<!--                    <a data-fancybox="images" href="--><?//= "/uploads/$video->gallery/$fileName" ?><!--">-->
+                    <a data-fancybox="images" href="<?= "/uploads/$video->gallery/$fileName" ?>">
                         <span>
                             <?= Html::img("@web/uploads/$video->preview_image") ?>
                         </span>
-<!--                    </a>-->
+                    </a>
                 </div>
             </div>
         </div>

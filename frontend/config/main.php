@@ -49,6 +49,7 @@ return [
                 '' => '/site/index',
                 'i/<id:\d+>' => 'site/list',
                 'v/<id:\d+>' => 'site/view',
+                'r/<id:\d+>' => 'site/region',
                 '<controller>/<action>/<id:\d+>' => '<controller>/<action>'
             ]
         ]
