@@ -1162,3 +1162,33 @@ a.footer_logo{
     color: #fe6601;
     font-size: 37px;
 }
+
+#region_light_gallery {
+    padding-top: 15px;
+}
+#region_light_gallery a img {
+    padding: 4px;
+    position: relative;
+    cursor: pointer;
+    width: 250px;
+    overflow: hidden;
+    border-radius:10px;
+}
+#region_light_gallery a{
+    border-bottom: none;
+    margin: 0 1px 1px 0;
+    transition: all 0.4s ease 0.1s;
+}
+.manager-area {
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #fe6601;
+    color: #fff;
+}
+.manager-area img {
+    border-radius: 10px;
+}
+.region-description {
+    font-family: "EngraversGothic";
+    font-size: 20px;
+}

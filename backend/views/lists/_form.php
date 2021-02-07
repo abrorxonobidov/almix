@@ -68,6 +68,24 @@ use common\models\RegionsSearch;
             ]
         ]); ?>
 
+    <? $anonsConfig = $model->inputImageConfig('inner_image', Url::to(['lists/file-remove']), Lists::class); ?>
+    <?= $form->field($model, 'helpInnerImage')
+        ->widget(FileInput::class, [
+            'options' => ['accept' => 'image/*'],
+            'pluginOptions' => [
+                'previewFileType' => 'image',
+                'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg'],
+                'initialPreview' => $anonsConfig['path'],
+                'initialPreviewAsData' => true,
+                'initialPreviewConfig' => $anonsConfig['config'],
+                'showUpload' => false,
+                'showRemove' => false,
+                'browseClass' => 'btn btn-success',
+                'browseLabel' => Html::icon('folder-open'). '&nbsp;Tanlang...',
+                'browseIcon' => ''
+            ]
+        ]); ?>
+
     <? $anonsConfig = $model->inputImageConfig('gallery', Url::to(['lists/file-remove']), Lists::class); ?>
 
 

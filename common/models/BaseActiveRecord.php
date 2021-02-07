@@ -24,6 +24,7 @@ use yii\web\UploadedFile;
  * @property string $previewLang
  * @property string $descriptionLang
  * @property string $helpImage
+ * @property string $helpInnerImage
  * @property integer $status
  *
  * @property Log $created
@@ -33,6 +34,7 @@ class BaseActiveRecord extends ActiveRecord
 {
 
     public $helpImage;
+    public $helpInnerImage;
     public $helpGallery;
 
     public function afterSave($insert, $changedAttributes)

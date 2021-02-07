@@ -29,7 +29,7 @@ AppAsset::register($this);
 <div class="wrapper">
     <div class="content">
     <section class="block_first">
-        <button type="button" class="b_left_menu"><img src="/img/humburger.png" alt=""/></button>
+        <button type="button" class="b_left_menu"><!--<img src="/img/humburger.png" alt=""/>--></button>
         <?= \frontend\widgets\LangSwitcherWidget::widget() ?>
         <?= \frontend\widgets\MenuWidget::widget() ?>
     </section>

@@ -28,7 +28,7 @@ foreach ($lists as $list) { ?>
                 </p>
             </div>
             <p class="text-right">
-                <?//= Html::a(Yii::t('main', 'Batafsil') . ' ...', ['site/region', 'id' => $list['id']]) ?>
+                <?= Html::a(Yii::t('main', 'Batafsil') . ' ...', ['site/region', 'id' => $list['id']]) ?>
             </p>
         </div>
     </div>

@@ -156,5 +156,34 @@ class SiteController extends Controller
         return $list;
     }
 
+    /**
+     * @param $id
+     * @return array|Lists|null
+     * @throws NotFoundHttpException
+     */
+    protected function findRegionModel($id)
+    {
+        $list = Lists::find()
+            ->where(['id' => $id, 'category_id' => 12])
+            ->active()
+            ->one();
+        if ($list === null)
+            throw new NotFoundHttpException(Yii::t('main', 'Ma’lumot topilmadi'));
+        return $list;
+    }
+
+
+    /**
+     * @param int $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionRegion($id)
+    {
+        return $this->render('region', [
+            'region' => $this->findRegionModel($id)
+        ]);
+    }
+
 
 }

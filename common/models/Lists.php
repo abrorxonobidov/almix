@@ -24,6 +24,7 @@ use yii\helpers\Url;
  * @property int|null $order
  * @property int|null $status
  * @property int|null $region_id
+ * @property string|null $inner_image
  *
  * @property ListCategory $category
  */
@@ -46,7 +47,7 @@ class Lists extends BaseActiveRecord
             [['category_id', 'title_uz'], 'required'],
             [['category_id', 'order', 'status', 'region_id'], 'integer'],
             [['description_uz', 'description_ru', 'description_en'], 'string'],
-            [['title_uz', 'title_ru', 'title_en', 'preview_uz', 'preview_ru', 'preview_en', 'preview_image', 'gallery'], 'string', 'max' => 255],
+            [['title_uz', 'title_ru', 'title_en', 'preview_uz', 'preview_ru', 'preview_en', 'preview_image', 'gallery', 'inner_image'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ListCategory::class, 'targetAttribute' => ['category_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Regions::class, 'targetAttribute' => ['region_id' => 'id']],
             [['order'], 'default', 'value' => 500],
@@ -63,6 +64,8 @@ class Lists extends BaseActiveRecord
             'category_id' => Yii::t('main', 'Kategoriya ID'),
             'category.titleLang' => Yii::t('main', 'Kategoriya'),
             'preview_image' => Yii::t('main', 'Izoh rasmi'),
+            'inner_image' => Yii::t('main', 'Ichki rasmi'),
+            'helpInnerImage' => Yii::t('main', 'Ichki rasmi'),
             'gallery' => Yii::t('main', 'Gallery'),
             'helpGallery' => Yii::t('main', 'Gallery'),
             'region_id' => Yii::t('main', 'Viloyat'),

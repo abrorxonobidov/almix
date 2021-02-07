@@ -50,6 +50,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     . ' ' . Html::tag('p', $model->preview_image),
                 'format' => 'raw'
             ],
+            [
+                'attribute' => 'inner_image',
+                'value' => Html::img($model::imageSourcePath() . $model->inner_image, ['class' => 'col-md-4'])
+                    . ' ' . Html::tag('p', $model->inner_image),
+                'format' => 'raw'
+            ],
             'order',
             [
                 'label' => Yii::t('main', 'Galeriya'),

@@ -64,8 +64,21 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'preview_image',
                 'value' => function (Lists $list) {
-                    return $list->preview_image ? Html::img('http://almix.uz/uploads/' . $list->preview_image) : '';
+                    return $list->preview_image ? Html::img('http://' . Yii::$app->params['domainName'] . '/uploads/' . $list->preview_image, ['class' => 'col-md-12']) : '';
                 },
+                'contentOptions' => [
+                    'class' => 'col-md-2'
+                ],
+                'format' => 'raw'
+            ],
+            [
+                'attribute' => 'inner_image',
+                'value' => function (Lists $list) {
+                    return $list->inner_image ? Html::img('http://' . Yii::$app->params['domainName'] . '/uploads/' . $list->inner_image, ['class' => 'col-md-12']) : '';
+                },
+                'contentOptions' => [
+                    'class' => 'col-md-2'
+                ],
                 'format' => 'raw'
             ],
             'order',
