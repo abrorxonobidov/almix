@@ -69,7 +69,8 @@ class SiteController extends Controller
             ])
             ->innerJoin(['l' => Lists::tableName()], 'r.id = l.region_id')
             ->where([
-                'l.category_id' => 12
+                'l.category_id' => 12,
+                'l.status' => 1
             ])
             ->andWhere('l.region_id > 0')
             ->asArray()
