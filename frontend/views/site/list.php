@@ -12,7 +12,7 @@ use yii\widgets\ListView;
  * @var $searchModel \backend\models\ListsSearch
  * @var $dataProvider \yii\data\ActiveDataProvider
  */
-
+$this->title = @$searchModel->category->titleLang ?? Yii::t('main', 'Roʻyxat');
 ?>
 
 <style>
@@ -25,7 +25,7 @@ use yii\widgets\ListView;
 
     <div class="container h_width">
         <div class="inner_title">
-            <span><?= @$searchModel->category->titleLang ?? Yii::t('main', 'Roʻyxat')?></span>
+            <span><?= $this->title?></span>
         </div>
 
         <?= ListView::widget([

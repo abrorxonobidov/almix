@@ -12,4 +12,5 @@ return [
     'Bizning prinsiplarimiz' => 'Наши принципы',
     'Fotogalereya' => 'Фотогалерея',
     'Kompaniya guruhi' => 'Группа компаний',
+    'Yangiliklar' => 'Новости',
 ];

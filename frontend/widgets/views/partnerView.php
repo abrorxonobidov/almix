@@ -25,7 +25,7 @@ use common\models\Lists;
             'layout' => '{items}',
             'itemView' => function (Lists $list) {
                 return
-                    Html::a(Html::img('@web/uploads/' . $list->preview_image) . $list->titleLang, '#', ['class' => 'text-uppercase']);
+                    Html::a(Html::img('@web/uploads/' . $list->preview_image) . $list->titleLang, ['site/view', 'id' => $list->id], ['class' => 'text-uppercase']);
             },
             'options' => [
                 'tag' => 'ul',

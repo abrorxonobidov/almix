@@ -21,6 +21,60 @@ use common\models\RegionsSearch;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?
+    $items = [];
+    foreach (Yii::$app->params['languages'] as $lang_code => $language)
+        $items[] = [
+            'label' => $language,
+            'content' => '<br>' .
+                $form->field($model, "title_$lang_code")->textarea(['rows' => 2]) .
+                $form->field($model, "preview_$lang_code")->textarea(['rows' => 3]) .
+                $form->field($model, "description_$lang_code")
+                    ->widget(\dosamigos\ckeditor\CKEditor::class, [
+                        'options' => [
+                            'id' => 'CK-' . $lang_code
+                        ],
+                        'preset' => 'custom',
+                        'clientOptions' => [
+                            'height' => 400,
+                            'language' => 'en',
+                            'extraPlugins' => 'font,smiley,colorbutton,iframe,selectall,copyformatting,justify',
+                            'removeButtons' => 'About,Anchor,Styles,Font',
+                            "toolbarGroups" => [
+                                ['name' => 'document', 'groups' => ['mode']],
+                                ['name' => 'clipboard', 'groups' => ['undo', 'clipboard']],
+                                ['name' => 'editing', 'groups' => ['find', 'selection', 'editing']],
+                                ['name' => 'links', 'groups' => ['links']],
+                                ['name' => 'insert', 'groups' => ['insert']],
+                                ['name' => 'colors', 'groups' => ['colors']],
+                                '/',
+                                ['name' => 'basicstyles', 'groups' => ['basicstyles', 'cleanup']],
+                                ['name' => 'paragraph', 'groups' => ['list', 'indent', 'blocks', 'align', 'paragraph']],
+                                ['name' => 'styles', 'groups' => ['styles']]
+                            ],
+                            'toolbar' => [
+                                ['name' => 'document', 'items' => ['Source']],
+                                ['name' => 'clipboard', 'items' => ['Undo', 'Redo', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord']],
+                                ['name' => 'editing', 'items' => ['SelectAll']],
+                                ['name' => 'links', 'items' => ['Link', 'Unlink']],
+                                ['name' => 'insert', 'items' => ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'Iframe']],
+                                ['name' => 'colors', 'items' => ['TextColor', 'BGColor']],
+                                ['name' => 'tools', 'items' => ['Maximize']],
+                                '/',
+                                ['name' => 'basicstyles', 'items' => ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat']],
+                                ['name' => 'paragraph', 'items' => ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']],
+                                ['name' => 'styles', 'items' => ['Format', 'FontSize']]
+                            ],
+                        ],
+                    ]),
+        ];
+
+    echo Tabs::widget(['items' => $items])
+
+    ?>
+
+    <br>
+
     <div class="row">
         <div class="col-md-3">
             <?= $form->field($model, 'category_id')
@@ -90,7 +144,6 @@ use common\models\RegionsSearch;
 
 
     <? $galleyConfig = $model->inputGalleryConfig(); ?>
-
     <?= $form->field($model, 'helpGallery[]')
         ->widget(FileInput::class, [
             'options' => [
@@ -112,61 +165,6 @@ use common\models\RegionsSearch;
             ]
         ]);
     ?>
-
-    <br>
-
-    <?
-    $items = [];
-    foreach (Yii::$app->params['languages'] as $lang_code => $language)
-        $items[] = [
-            'label' => $language,
-            'content' => '<br>' .
-                $form->field($model, "title_$lang_code")->textarea(['rows' => 2]) .
-                $form->field($model, "preview_$lang_code")->textarea(['rows' => 3]) .
-                $form->field($model, "description_$lang_code")
-                    ->widget(\dosamigos\ckeditor\CKEditor::class, [
-                        'options' => [
-                            'id' => 'CK-' . $lang_code
-                        ],
-                        'preset' => 'custom',
-                        'clientOptions' => [
-                            'height' => 400,
-                            'language' => 'en',
-                            'extraPlugins' => 'font,smiley,colorbutton,iframe,selectall,copyformatting,justify',
-                            'removeButtons' => 'About,Anchor,Styles,Font',
-                            "toolbarGroups" => [
-                                ['name' => 'document', 'groups' => ['mode']],
-                                ['name' => 'clipboard', 'groups' => ['undo', 'clipboard']],
-                                ['name' => 'editing', 'groups' => ['find', 'selection', 'editing']],
-                                ['name' => 'links', 'groups' => ['links']],
-                                ['name' => 'insert', 'groups' => ['insert']],
-                                ['name' => 'colors', 'groups' => ['colors']],
-                                '/',
-                                ['name' => 'basicstyles', 'groups' => ['basicstyles', 'cleanup']],
-                                ['name' => 'paragraph', 'groups' => ['list', 'indent', 'blocks', 'align', 'paragraph']],
-                                ['name' => 'styles', 'groups' => ['styles']]
-                            ],
-                            'toolbar' => [
-                                ['name' => 'document', 'items' => ['Source']],
-                                ['name' => 'clipboard', 'items' => ['Undo', 'Redo', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord']],
-                                ['name' => 'editing', 'items' => ['SelectAll']],
-                                ['name' => 'links', 'items' => ['Link', 'Unlink']],
-                                ['name' => 'insert', 'items' => ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'Iframe']],
-                                ['name' => 'colors', 'items' => ['TextColor', 'BGColor']],
-                                ['name' => 'tools', 'items' => ['Maximize']],
-                                '/',
-                                ['name' => 'basicstyles', 'items' => ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat']],
-                                ['name' => 'paragraph', 'items' => ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']],
-                                ['name' => 'styles', 'items' => ['Format', 'FontSize']]
-                            ],
-                        ],
-                    ]),
-        ];
-
-    echo Tabs::widget(['items' => $items])
-
-    ?>
-
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success']) ?>

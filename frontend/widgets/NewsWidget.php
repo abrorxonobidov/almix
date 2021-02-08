@@ -9,19 +9,32 @@
 namespace frontend\widgets;
 
 
-use frontend\models\ListsSearch;
+use common\models\Lists;
 use yii\base\Widget;
+use yii\data\ActiveDataProvider;
 
+/**
+ * Class NewsWidget
+ * @package frontend\widgets
+ *
+ * @property array $current_id
+ */
 class NewsWidget extends Widget
 {
 
+    public $current_id = null;
+
     public function run()
     {
-        $searchModel = new ListsSearch();
-        $searchModel['category_id'] = 2;
-        $dataProvider = $searchModel->search([]);
-        $dataProvider->pagination->pageSize = 3;
-        $dataProvider->pagination->page = 0;
+        $dataProvider = new ActiveDataProvider([
+            'query' => Lists::find()
+                ->andWhere(['category_id' => 2, 'status' => 1])
+                ->andFilterWhere(['!=', 'id', $this->current_id])
+                ->orderBy(['order' => SORT_DESC, 'id' => SORT_DESC]),
+            'pagination' => [
+                'pageSize' => 3
+            ]
+        ]);
         return $this->render('newsView', [
             'dataProvider' => $dataProvider
         ]);

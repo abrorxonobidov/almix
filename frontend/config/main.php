@@ -50,6 +50,7 @@ return [
                 'i/<id:\d+>' => 'site/list',
                 'v/<id:\d+>' => 'site/view',
                 'r/<id:\d+>' => 'site/region',
+                'p/<id:\d+>' => 'site/partner',
                 '<controller>/<action>/<id:\d+>' => '<controller>/<action>'
             ]
         ]
