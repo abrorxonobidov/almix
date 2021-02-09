@@ -20,4 +20,10 @@ return [
     'cacheDurationNormal' => 300, //seconds = 5 minute
     'cacheDurationMin' => 60, //seconds = 1 minute
     'imageUploadPath' => Yii::getAlias('@frontend') . '/web/uploads/',
+    'allowedImageExtension' => "/{*.jpg,*.JPG,*.jpeg,*.gif,*.png}",
+    'links' => [
+        4 => 'site/gallery',
+        12 => 'site/region',
+        11 => 'site/partner',
+    ]
 ];

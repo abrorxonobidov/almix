@@ -166,7 +166,7 @@ class ListsController extends BaseController
             $return = true;
         }
 
-        $images = glob($path . "/{*.jpg,*.jpeg,*.gif,*.png}", GLOB_BRACE);
+        $images = glob($path . Yii::$app->params['allowedImageExtension'], GLOB_BRACE);
 
         if (count($images) == 0) {
             BaseActiveRecord::deleteDir($path);

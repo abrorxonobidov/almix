@@ -45,7 +45,7 @@ $this->title = $list->category->titleLang . ' | ' . $list->titleLang;
 
             <div class="text-center">
                 <? if ($list->gallery) {
-                    $images = glob($list::uploadImagePath() . $list->gallery . "/{*.jpg,*.jpeg,*.gif,*.png}", GLOB_BRACE);
+                    $images = glob($list::uploadImagePath() . $list->gallery . Yii::$app->params['allowedImageExtension'], GLOB_BRACE);
                     $items = [];
                     foreach ($images as $image) {
                         $filePath = explode('/', $image);

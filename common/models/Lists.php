@@ -110,7 +110,7 @@ class Lists extends BaseActiveRecord
         ];
         if (!$this->isNewRecord && !empty($this->gallery)) {
 
-            $files = glob(self::uploadImagePath() . $this->gallery . "/{*.jpg,*.jpeg,*.gif,*.png}", GLOB_BRACE);
+            $files = glob(self::uploadImagePath() . $this->gallery . Yii::$app->params['allowedImageExtension'], GLOB_BRACE);
 
             foreach ($files as $file) {
                 $filePath = explode('/', $file);

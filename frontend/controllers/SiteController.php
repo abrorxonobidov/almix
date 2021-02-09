@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: a_obidov
+ * Date: 06-01-21
+ * Time: 20:00
+ */
 
 namespace frontend\controllers;
 
@@ -35,6 +41,7 @@ class SiteController extends Controller
         ];
     }
 
+
     /**
      * {@inheritdoc}
      */
@@ -48,12 +55,20 @@ class SiteController extends Controller
     }
 
 
+    /**
+     * Main page
+     * @return string
+     */
     public function actionIndex()
     {
         return $this->render('index');
     }
 
 
+    /**
+     * Api action for AJAX request
+     * @return array
+     */
     public function actionRegionsList()
     {
         $regs = Regions::find()
@@ -76,22 +91,23 @@ class SiteController extends Controller
             ->asArray()
             ->all();
         $data = [];
-
         if ($regs) {
-
             foreach ($regs as $reg) {
                 $data[$reg['code']]['image'] = Html::img('@web/uploads/' . $reg['preview_image']);
                 $data[$reg['code']]['title'] = $reg['region_title'];
                 $data[$reg['code']]['address'] = @$data[$reg['code']]['address'] ? $data[$reg['code']]['address'] . ', ' . $reg['list_title'] : $reg['list_title'];
                 $data[$reg['code']]['code'] = $reg['code'];
             }
-
         }
-
         return $data;
     }
 
 
+    /**
+     * Api action for AJAX request
+     * @param string $code
+     * @return string
+     */
     public function actionRegionsCode($code)
     {
 
@@ -118,6 +134,11 @@ class SiteController extends Controller
         ]);
     }
 
+
+    /**
+     * @param int $id
+     * @return string
+     */
     public function actionList($id = 2)
     {
         $searchModel = new ListsSearch();
@@ -145,27 +166,16 @@ class SiteController extends Controller
 
 
     /**
-     * @param $id
+     * @param int $id
+     * @param int $category_id
      * @return array|Lists|null
      * @throws NotFoundHttpException
      */
-    protected function findModel($id)
-    {
-        $list = Lists::find()->where(['id' => $id])->active()->one();
-        if ($list === null)
-            throw new NotFoundHttpException(Yii::t('main', 'Ma’lumot topilmadi'));
-        return $list;
-    }
-
-    /**
-     * @param $id
-     * @return array|Lists|null
-     * @throws NotFoundHttpException
-     */
-    protected function findRegionModel($id)
+    protected function findModel($id, $category_id = null)
     {
         $list = Lists::find()
-            ->where(['id' => $id, 'category_id' => 12])
+            ->where(['id' => $id])
+            ->andFilterWhere(['category_id' => $category_id])
             ->active()
             ->one();
         if ($list === null)
@@ -182,9 +192,34 @@ class SiteController extends Controller
     public function actionRegion($id)
     {
         return $this->render('region', [
-            'region' => $this->findRegionModel($id)
+            'region' => $this->findModel($id, 12)
         ]);
     }
 
+
+    /**
+     * @param int $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionGallery($id)
+    {
+        return $this->render('gallery', [
+            'gallery' => $this->findModel($id, 4)
+        ]);
+    }
+
+
+    /**
+     * @param int $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionPartner($id)
+    {
+        return $this->render('partner', [
+            'partner' => $this->findModel($id, 11)
+        ]);
+    }
 
 }

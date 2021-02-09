@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     if (!$model->gallery) {
                         return '';
                     }
-                    $images = glob($model::uploadImagePath() . $model->gallery . "/{*.jpg,*.jpeg,*.gif,*.png}", GLOB_BRACE);
+                    $images = glob($model::uploadImagePath() . $model->gallery . Yii::$app->params['allowedImageExtension'], GLOB_BRACE);
                     $gallery = [];
                     foreach ($images as $image) {
                         $filePath = explode('/', $image);

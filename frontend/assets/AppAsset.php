@@ -15,7 +15,7 @@ class AppAsset extends AssetBundle
         'css/jqvmap.css',
         //'css/bootstrap.min.css',
         'css/jquery-ui.css',
-        'css/style.css?v=4',
+        'css/style.css?v=5',
         'css/swiper-bundle.min.css',
         'css/media.css?v=2',
         'css/owl.carousel.css',

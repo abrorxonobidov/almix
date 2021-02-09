@@ -341,7 +341,7 @@ class BaseActiveRecord extends ActiveRecord
      */
     public static function imageSourcePath()
     {
-        return 'http://' . str_replace('admin.', '', $_SERVER['SERVER_NAME']) . '/uploads/';
+        return 'http://' . Yii::$app->params['domainName'] . '/uploads/';
     }
 
     /**

@@ -2,18 +2,18 @@
 /**
  * Created by PhpStorm.
  * User: a_obidov
- * Date: 15.01.2021
- * Time: 23:32
+ * Date: 08-Feb-21
+ * Time: 20:00
  */
 
 use yii\bootstrap\Html;
 
 /**
  * @var $list \common\models\Lists
+ * @var $view string
  */
 
 $imageSrc = $list->preview_image ? "/uploads/$list->preview_image" : '/img/default_image.jpg';
-$view = @Yii::$app->params['links'][$list->category_id] ?? 'site/view';
 
 ?>
 <div class="thumbnail">

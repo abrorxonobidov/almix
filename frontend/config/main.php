@@ -47,7 +47,8 @@ return [
             'enableLanguageDetection' => false,
             'rules' => [
                 '' => '/site/index',
-                'i/<id:\d+>' => 'site/list',
+                'l/<id:\d+>' => 'site/list',
+                'g/<id:\d+>' => 'site/gallery',
                 'v/<id:\d+>' => 'site/view',
                 'r/<id:\d+>' => 'site/region',
                 'p/<id:\d+>' => 'site/partner',

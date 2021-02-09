@@ -71,7 +71,7 @@ $this->title = $region->category->titleLang . ' | ' . $region->titleLang;
 
             <div class="text-center">
                 <? if ($region->gallery) {
-                    $images = glob($region::uploadImagePath() . $region->gallery . "/{*.jpg,*.jpeg,*.gif,*.png}", GLOB_BRACE);
+                    $images = glob($region::uploadImagePath() . $region->gallery . Yii::$app->params['allowedImageExtension'], GLOB_BRACE);
                     $items = [];
                     foreach ($images as $image) {
                         $filePath = explode('/', $image);
@@ -99,5 +99,8 @@ $this->title = $region->category->titleLang . ' | ' . $region->titleLang;
                 ?>
             </div>
         </div>
+
+        <?=\frontend\widgets\SimilarListItemsWidget::widget(['current_list' => $region])?>
+
     </div>
 </section>
