@@ -13,4 +13,5 @@ return [
     'Fotogalereya' => 'Фотогалерея',
     'Kompaniya guruhi' => 'Группа компаний',
     'Yangiliklar' => 'Новости',
+    'Barcha yangiliklar' => 'Все новости',
 ];
