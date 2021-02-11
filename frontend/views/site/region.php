@@ -70,37 +70,11 @@ $this->title = $region->category->titleLang . ' | ' . $region->titleLang;
             <br>
 
             <div class="text-center">
-                <? if ($region->gallery) {
-                    $images = glob($region::uploadImagePath() . $region->gallery . Yii::$app->params['allowedImageExtension'], GLOB_BRACE);
-                    $items = [];
-                    foreach ($images as $image) {
-                        $filePath = explode('/', $image);
-                        $fileName = end($filePath);
-                        $items[] = [
-                            'thumb' => "/uploads/{$region->gallery}/$fileName",
-                            'src' => "/uploads/{$region->gallery}/$fileName",
-                        ];
-                    }
-                    if ($items) {
-                        echo Html::tag('h3', Yii::t('main', 'Fotogalereya'), ['class' => 'title']);
-                        echo MyLightGalleryWidget::widget([
-                            'id' => 'region_light_gallery',
-                            'items' => $items,
-                            'options' => [
-                                'mode' => 'lg-zoom-in-big',
-                                'share' => false,
-                                'rotate' => false,
-                                'flipHorizontal' => false,
-                                'flipVertical' => false
-                            ]
-                        ]);
-                    }
-                }
-                ?>
+                <?= $region->gallery ? \frontend\widgets\InnerGalleryWidget::widget(['folder' => $region->gallery]) : '' ?>
             </div>
         </div>
 
-        <?=\frontend\widgets\SimilarListItemsWidget::widget(['current_list' => $region])?>
+        <?= \frontend\widgets\SimilarListItemsWidget::widget(['current_list' => $region]) ?>
 
     </div>
 </section>

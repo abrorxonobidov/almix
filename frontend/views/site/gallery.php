@@ -34,41 +34,11 @@ $this->title = $gallery->category->titleLang . ' | ' . $gallery->titleLang;
             <?= $gallery->descriptionLang ?>
             <br>
             <div class="text-center">
-                <? if ($gallery->gallery) {
-                    $images = glob($gallery::uploadImagePath() . $gallery->gallery . Yii::$app->params['allowedImageExtension'], GLOB_BRACE);
-                    $items = [
-                        [
-                            'thumb' => $imageSrc,
-                            'src' => $imageSrc
-                        ]
-                    ];
-                    foreach ($images as $image) {
-                        $filePath = explode('/', $image);
-                        $fileName = end($filePath);
-                        $items[] = [
-                            'thumb' => "/uploads/{$gallery->gallery}/$fileName",
-                            'src' => "/uploads/{$gallery->gallery}/$fileName",
-                        ];
-                    }
-                    if ($items) {
-                        echo MyLightGalleryWidget::widget([
-                            'id' => 'region_light_gallery',
-                            'items' => $items,
-                            'options' => [
-                                'mode' => 'lg-zoom-in-big',
-                                'share' => false,
-                                'rotate' => false,
-                                'flipHorizontal' => false,
-                                'flipVertical' => false
-                            ]
-                        ]);
-                    }
-                }
-                ?>
+                <?= $gallery->gallery ? \frontend\widgets\InnerGalleryWidget::widget(['folder' => $gallery->gallery]) : '' ?>
             </div>
         </div>
 
-        <?=\frontend\widgets\SimilarListItemsWidget::widget(['current_list' => $gallery])?>
+        <?= \frontend\widgets\SimilarListItemsWidget::widget(['current_list' => $gallery]) ?>
 
     </div>
 </section>

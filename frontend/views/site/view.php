@@ -44,37 +44,11 @@ $this->title = $list->category->titleLang . ' | ' . $list->titleLang;
             <?= $list->descriptionLang ?>
 
             <div class="text-center">
-                <? if ($list->gallery) {
-                    $images = glob($list::uploadImagePath() . $list->gallery . Yii::$app->params['allowedImageExtension'], GLOB_BRACE);
-                    $items = [];
-                    foreach ($images as $image) {
-                        $filePath = explode('/', $image);
-                        $fileName = end($filePath);
-                        $items[] = [
-                            'thumb' => "/uploads/{$list->gallery}/$fileName",
-                            'src' => "/uploads/{$list->gallery}/$fileName",
-                        ];
-                    }
-                    if ($items) {
-                        echo Html::tag('h3', Yii::t('main', 'Fotogalereya'), ['class' => 'title']);
-                        echo MyLightGalleryWidget::widget([
-                            'id' => 'region_light_gallery',
-                            'items' => $items,
-                            'options' => [
-                                'mode' => 'lg-zoom-in-big',
-                                'share' => false,
-                                'rotate' => false,
-                                'flipHorizontal' => false,
-                                'flipVertical' => false
-                            ]
-                        ]);
-                    }
-                }
-                ?>
+                <?= $list->gallery ? \frontend\widgets\InnerGalleryWidget::widget(['folder' => $list->gallery]) : '' ?>
             </div>
         </div>
 
-        <?=\frontend\widgets\NewsWidget::widget(['current_id' => $list->id])?>
+        <?= \frontend\widgets\NewsWidget::widget(['current_id' => $list->id]) ?>
 
     </div>
 </section>
