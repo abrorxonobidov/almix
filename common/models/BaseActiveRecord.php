@@ -264,9 +264,33 @@ class BaseActiveRecord extends ActiveRecord
      * @param string $fileInput
      * @param string $field
      * @param string $table
-     * @throws NotFoundHttpException
      */
     public function uploadGallery($fileInput, $field, $table = '')
+    {
+        $images = UploadedFile::getInstances($this, $fileInput);
+        if ($images) {
+            if (!$this->isNewRecord && !empty($this->$field)) {
+                $folderName = $this->$field;
+            } else {
+                $folderName = self::createGuid() . '_' . $table;
+                mkdir(self::uploadImagePath() . $folderName);
+                $this->$field = $folderName;
+            }
+            foreach ($images as $key => $image) {
+                $imageName = str_pad($key , 3, '0', STR_PAD_LEFT) . '_' . self::createGuid() . '_' . $table . '.' . $image->getExtension();
+                $imagePath = self::uploadImagePath() . $folderName . '/' . $imageName;
+                $image->saveAs($imagePath);
+            }
+        }
+    }
+
+    /**
+     * @param string $fileInput
+     * @param string $field
+     * @param string $table
+     * @throws NotFoundHttpException
+     */
+    public function uploadGalleryReplace($fileInput, $field, $table = '')
     {
         $images = UploadedFile::getInstances($this, $fileInput);
         if ($images) {

@@ -20,7 +20,7 @@ use yii\helpers\Html;
         <span class="title_other"><?= Yii::t('main', 'So‘ngi yangiliklar') ?></span>
         <?= ListView::widget([
             'dataProvider' => $dataProvider,
-            'layout' => '{items} </div><div class="pagination_b text-center"><nav aria-label="Page navigation">{pager}</nav></div>',
+            'layout' => '{items}',
             'itemView' => function ($list, $key, $index, $widget) {
                 return
                     /** @var  \yii\web\View $this */
