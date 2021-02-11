@@ -7,7 +7,6 @@
  */
 
 use yii\bootstrap\Html;
-use frontend\components\MyLightGalleryWidget;
 
 /**
  * @var $list \common\models\Lists

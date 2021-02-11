@@ -20,16 +20,23 @@ use Yii;
  * @package frontend\widgets
  *
  * @property string $folder
+ * @property string $preview_image
  */
 class InnerGalleryWidget extends Widget
 {
     public $folder;
+    public $preview_image = null;
 
     public function run()
     {
         $images = glob(BaseActiveRecord::uploadImagePath() . $this->folder . Yii::$app->params['allowedImageExtension'], GLOB_BRACE);
         sort($images);
-        $items = [];
+        $items = $this->preview_image ? [
+            [
+                'thumb' => $this->preview_image,
+                'src' => $this->preview_image
+            ]
+        ] : [];
         foreach ($images as $image) {
             $filePath = explode('/', $image);
             $fileName = end($filePath);

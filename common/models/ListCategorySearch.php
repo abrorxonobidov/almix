@@ -78,7 +78,7 @@ class ListCategorySearch extends ListCategory
     public static function getMainCats()
     {
         return ListCategory::find()
-            ->where(['IN', 'id', [1, 2, 4, 5]])
+            ->where(['IN', 'id', [2, 4, 5]])
             ->all();
     }
 
@@ -88,7 +88,7 @@ class ListCategorySearch extends ListCategory
     public static function getOtherCats()
     {
         return ListCategory::find()
-            ->where(['NOT IN', 'id', [1, 2, 4, 5]])
+            ->where(['NOT IN', 'id', [2, 4, 5]])
             ->all();
     }
 

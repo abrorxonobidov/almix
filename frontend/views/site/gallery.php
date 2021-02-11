@@ -34,7 +34,7 @@ $this->title = $gallery->category->titleLang . ' | ' . $gallery->titleLang;
             <?= $gallery->descriptionLang ?>
             <br>
             <div class="text-center">
-                <?= $gallery->gallery ? \frontend\widgets\InnerGalleryWidget::widget(['folder' => $gallery->gallery]) : '' ?>
+                <?= $gallery->gallery ? \frontend\widgets\InnerGalleryWidget::widget(['folder' => $gallery->gallery, 'preview_image' => $imageSrc]) : '' ?>
             </div>
         </div>
 

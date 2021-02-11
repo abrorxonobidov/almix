@@ -20,7 +20,35 @@ use common\models\RegionsSearch;
 <div class="lists-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
+    <div class="row">
+        <div class="col-md-3">
+            <?= $form->field($model, 'category_id')
+                ->widget(Select2::class, [
+                    'data' => ListCategorySearch::getForDropDown(),
+                    'pluginOptions' => [
+                        'allowClear' => true,
+                        'placeholder' => $model->getAttributeLabel('category_id')
+                    ],
+                ]) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'region_id')
+                ->widget(Select2::class, [
+                    'data' => RegionsSearch::getForDropDown(),
+                    'pluginOptions' => [
+                        'allowClear' => true,
+                        'placeholder' => $model->getAttributeLabel('region_id')
+                    ],
+                ]) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'order')->textInput() ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'status')->dropDownList($model::getStatusListKeyAndTitle()) ?>
+        </div>
+    </div>
+    <br>
     <?
     $items = [];
     foreach (Yii::$app->params['languages'] as $lang_code => $language)
@@ -72,37 +100,6 @@ use common\models\RegionsSearch;
     echo Tabs::widget(['items' => $items])
 
     ?>
-
-    <br>
-
-    <div class="row">
-        <div class="col-md-3">
-            <?= $form->field($model, 'category_id')
-                ->widget(Select2::class, [
-                    'data' => ListCategorySearch::getForDropDown(),
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'placeholder' => $model->getAttributeLabel('category_id')
-                    ],
-                ]) ?>
-        </div>
-        <div class="col-md-3">
-            <?= $form->field($model, 'region_id')
-                ->widget(Select2::class, [
-                    'data' => RegionsSearch::getForDropDown(),
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'placeholder' => $model->getAttributeLabel('region_id')
-                    ],
-                ]) ?>
-        </div>
-        <div class="col-md-3">
-            <?= $form->field($model, 'order')->textInput() ?>
-        </div>
-        <div class="col-md-3">
-            <?= $form->field($model, 'status')->dropDownList($model::getStatusListKeyAndTitle()) ?>
-        </div>
-    </div>
 
     <? $anonsConfig = $model->inputImageConfig('preview_image', Url::to(['lists/file-remove']), Lists::class); ?>
     <?= $form->field($model, 'helpImage')
