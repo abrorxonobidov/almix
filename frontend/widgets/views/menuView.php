@@ -29,7 +29,7 @@ use yii\helpers\Url;
                         <li><a href="<?= Url::to(['site/list', 'id' => 2])?>"><?=Yii::t('main', 'Yangiliklar')?></a></li>
                         <li class="mobile_logo"><a href="<?= Url::to(['site/index'])?>"><img src="/img/logo_almix.png" alt=""/></a></li>
                         <li><a href="<?= Url::to(['site/list', 'id' => 4])?>"><?=Yii::t('main', 'Fotogalereya')?></a></li>
-<!--                        <li><a href="--><?//= Url::to(['site/view', 'id' => 12])?><!--">--><?//=Yii::t('main', 'Kompaniya haqida')?><!--</a></li>-->
+                        <li><a href="<?= Url::to(['site/list', 'id' => 15])?>"><?=Yii::t('main', 'Faxriy hodimlar')?></a></li>
 <!--                        <li><a href="--><?//= Url::to(['site/contacts'])?><!--">--><?//=Yii::t('main', 'Bog‘lanish')?><!--</a></li>-->
                     </ul>
                 </div>

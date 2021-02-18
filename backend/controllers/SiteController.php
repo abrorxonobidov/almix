@@ -1,6 +1,8 @@
 <?php
+
 namespace backend\controllers;
 
+use backend\models\UpdateUser;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -26,7 +28,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'update'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -98,5 +100,36 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+
+    /**
+     * @return string
+     * @throws \yii\base\Exception
+     */
+    public function actionUpdate()
+    {
+
+        $user = UpdateUser::findOne(Yii::$app->user->id);
+
+        if ($user->load(Yii::$app->request->post())) {
+            if ($user->validatePassword($user->password)) {
+                if ($user->new_password == $user->repeat_new_password) {
+                    if ($user->new_password)
+                        $user->setPassword($user->new_password);
+                    if ($user->save()) {
+                        Yii::$app->session->setFlash('success', 'User data updated');
+                        return $this->redirect(['site/update']);
+                    }
+                } else
+                    $user->addError('repeat_new_password', 'Passwords are not identical');
+            } else
+                $user->addError('password', 'Incorrect password');
+            Yii::$app->session->setFlash('error', implode(', ', array_column($user->errors, 0)));
+        }
+
+        return $this->render('update', [
+            'user' => $user
+        ]);
     }
 }

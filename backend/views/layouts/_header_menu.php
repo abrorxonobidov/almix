@@ -22,7 +22,6 @@ NavBar::begin([
 ]);
 if (Yii::$app->user->isGuest) {
     $menuItems = [
-        ['label' => 'Home', 'url' => ['site/index']],
         ['label' => 'Login', 'url' => ['site/login']]
     ];
 } else {
@@ -63,12 +62,22 @@ if (Yii::$app->user->isGuest) {
         'label' => 'Kategoriyalar',
         'url' => ['list-category/index']
     ];
-    $menuItems[] =
-        Html::beginTag('li')
-        . Html::beginForm(['site/logout'], 'post')
-        . Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')', ['class' => 'btn btn-link logout'])
-        . Html::endForm()
-        . Html::endTag('li');
+    $menuItems[] = [
+        'label' => 'Profil',
+        'items' => [
+            [
+                'label' => 'Personal data',
+                'url' => ['site/update']
+            ],
+            [
+                'label' =>
+                    Html::beginForm(['site/logout'], 'post')
+                    . Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')', ['class' => 'btn btn-block btn-warning'])
+                    . Html::endForm(),
+                'encode' => false
+            ]
+        ],
+    ];
 
 }
 echo Nav::widget([
