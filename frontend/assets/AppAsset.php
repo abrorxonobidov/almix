@@ -15,11 +15,12 @@ class AppAsset extends AssetBundle
         'css/jqvmap.css',
         //'css/bootstrap.min.css',
         'css/jquery-ui.css',
-        'css/style.css?v=5',
+        'css/style.css?v=6',
         'css/swiper-bundle.min.css',
         'css/media.css?v=2',
         'css/owl.carousel.css',
         'css/fancybox.min.css',
+        'css/font-awesome.min.css',
     ];
     public $js = [
         //'js/jquery-3.5.1.min.js',

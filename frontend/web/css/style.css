@@ -1194,3 +1194,24 @@ a.footer_logo{
     font-family: "EngraversGothic";
     font-size: 20px;
 }
+
+.block-soc-net {
+    text-align: center;
+}
+.block-soc-net ul {
+    padding: 30px 30px 50px;
+}
+.block-soc-net ul li {
+    display: inline-block;
+    vertical-align: top;
+    align-items: center;
+    margin-right: 50px;
+}
+.block-soc-net ul li:last-child{
+    margin-right: 0;
+}
+.block-soc-net ul li a {
+    color: #007aff;
+    font-size: 60px;
+    display: block;
+}

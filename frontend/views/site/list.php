@@ -49,9 +49,9 @@ $this->title = @$searchModel->category->titleLang ?? Yii::t('main', 'Roʻyxat');
                 'tag' => 'div',
                 'class' => 'col-lg-4 col-md-4 col-sm-6 news_box'
             ],
-            'emptyText' => Yii::t('main', 'Ma’lumot topilmadi'),
+            'emptyText' => '<p>'. Yii::t('main', 'Ma’lumot topilmadi') . '</p>',
             'emptyTextOptions' => [
-                'class' => 'alert alert-success',
+                'class' => 'news_full_content text-center',
                 'style' => 'width:100%'
             ]
         ]) ?>

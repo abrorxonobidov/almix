@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: User
+ * User: Abrorxon Obidov
  * Date: 16-Jan-21
  * Time: 23:53
  */
@@ -14,4 +14,7 @@ return [
     'Kompaniya guruhi' => 'Группа компаний',
     'Yangiliklar' => 'Новости',
     'Barcha yangiliklar' => 'Все новости',
+    'Ijtimoiy tarmoqlar' => 'Социальные сети',
+    'Mahsulotlar' => 'Продукции',
+    'Xizmatlar' => 'Услуги',
 ];

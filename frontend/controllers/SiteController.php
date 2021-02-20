@@ -222,4 +222,16 @@ class SiteController extends Controller
         ]);
     }
 
+
+    /**
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionAbout()
+    {
+        return $this->render('view', [
+            'list' => $this->findModel(59)
+        ]);
+    }
+
 }

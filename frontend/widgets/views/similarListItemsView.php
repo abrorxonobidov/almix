@@ -43,9 +43,10 @@ $view = @Yii::$app->params['links'][$category->id] ?? 'site/view';
             'itemOptions' => [
                 'tag' => 'div',
                 'class' => 'col-lg-4 col-md-4 col-sm-6 news_box'
-            ]
+            ],
+            'emptyText' => '',
         ]); ?>
-        <?= Html::a($category->titleLang, ['site/list', 'id' => $category->id], ['class' => 'news_all_link']) ?>
+        <?= $category->id == 3 ? '' : Html::a($category->titleLang, ['site/list', 'id' => $category->id], ['class' => 'news_all_link']) ?>
 
     </div>
 </section>

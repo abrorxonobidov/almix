@@ -47,7 +47,8 @@ $this->title = $list->category->titleLang . ' | ' . $list->titleLang;
             </div>
         </div>
 
-        <?= \frontend\widgets\NewsWidget::widget(['current_id' => $list->id]) ?>
+        <?//= \frontend\widgets\NewsWidget::widget(['current_id' => $list->id]) ?>
+        <?= \frontend\widgets\SimilarListItemsWidget::widget(['current_list' => $list]) ?>
 
     </div>
 </section>
