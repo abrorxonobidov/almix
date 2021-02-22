@@ -376,6 +376,30 @@
         position: relative;
         bottom: auto;
     }
+    /*.social-icons {
+        position: absolute;
+        top: 117px;
+        left: 21px;
+        border-radius: 6px;
+    }*/
+    .social-icons {
+        top: initial;
+        bottom: 0;
+        left: 50%;
+        border-radius: 10px 10px 0 0;
+        transform: translate(-50%, 0);
+    }
+    .social-icons li {
+        display: inline-block;
+    }
+    .social-icons li:nth-child(2) {
+        border: 0;
+        border-left: 2px solid #fff;
+        border-right: 2px solid #fff;
+    }
+    /*.social-icons li a {
+        padding: 6px 10px;
+    }*/
 }
 @media screen and (max-width: 700px){
     .reasons_list li{

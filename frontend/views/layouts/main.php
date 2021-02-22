@@ -26,6 +26,8 @@ AppAsset::register($this);
 <body>
 <? $this->beginBody() ?>
 
+<?=\frontend\widgets\SocialNetworksWidget::widget()?>
+
 <div class="wrapper">
     <div class="content">
     <section class="block_first">

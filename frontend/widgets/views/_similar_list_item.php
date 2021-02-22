@@ -12,6 +12,7 @@ use yii\bootstrap\Html;
  * @var $list \common\models\Lists
  * @var $view string
  */
+$list = $model;
 
 $imageSrc = $list->preview_image ? "/uploads/$list->preview_image" : '/img/default_image.jpg';
 

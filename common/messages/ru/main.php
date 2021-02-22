@@ -17,4 +17,5 @@ return [
     'Ijtimoiy tarmoqlar' => 'Социальные сети',
     'Mahsulotlar' => 'Продукции',
     'Xizmatlar' => 'Услуги',
+    'Media' => 'Медиа',
 ];

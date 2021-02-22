@@ -19,10 +19,10 @@ $this->title = Yii::t('main', 'Bosh sahifa');
 
 <?= \frontend\widgets\PrincipleWidget::widget() ?>
 
-<section class="block-soc-net">
+<!--<section class="block-soc-net">
     <div class="container h_width">
         <span class="title">
-            <?= Yii::t('main', 'Ijtimoiy tarmoqlar') ?>
+            <?/*= Yii::t('main', 'Ijtimoiy tarmoqlar') */?>
         </span>
         <ul>
             <li>
@@ -42,7 +42,7 @@ $this->title = Yii::t('main', 'Bosh sahifa');
             </li>
         </ul>
     </div>
-</section>
+</section>-->
 
 <?= \frontend\widgets\PartnerWidget::widget() ?>
 

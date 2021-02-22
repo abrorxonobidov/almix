@@ -858,6 +858,7 @@ a.news_all_link:hover{
     display: table;
     margin: 0 auto 10px auto;
     transition: all 0.3s ease-in-out;
+    border-radius: 100px;
 }
 .sponsor_list li a{
     display: table;
@@ -1214,4 +1215,38 @@ a.footer_logo{
     color: #007aff;
     font-size: 60px;
     display: block;
+}
+
+.social-icons {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9;
+    background-color:  #007aff;
+    border-radius: 0 10px 10px 0;
+    overflow: hidden;
+    transform: translate(0, -50%);
+    box-shadow: 3px 4px 10px 3px #595959;
+}
+.social-icons li {
+    /*display: block;*/
+    /*width: 50px;*/
+}
+.social-icons li:nth-child(2) {
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+.social-icons li a {
+    display: block;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+.social-icons li a:hover {
+    background-color: rgb(0, 58, 117);
+}
+
+.social-icons li a i {
+    color: #fff;
+    font-size: 30px;
 }

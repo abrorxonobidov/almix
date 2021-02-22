@@ -23,16 +23,7 @@ $view = @Yii::$app->params['links'][$category->id] ?? 'site/view';
         <?= ListView::widget([
             'dataProvider' => $dataProvider,
             'layout' => '{items}',
-            'itemView' => function ($list, $key, $index, $widget) {
-                return
-                    /** @var  \yii\web\View $this */
-                    $this->render('_similar_list_item', [
-                        'list' => $list,
-                        'key' => $key,
-                        'index' => $index,
-                        'widget' => $widget
-                    ]);
-            },
+            'itemView' => '_similar_list_item',
             'viewParams' => [
                 'view' => $view,
             ],
@@ -47,6 +38,5 @@ $view = @Yii::$app->params['links'][$category->id] ?? 'site/view';
             'emptyText' => '',
         ]); ?>
         <?= $category->id == 3 ? '' : Html::a($category->titleLang, ['site/list', 'id' => $category->id], ['class' => 'news_all_link']) ?>
-
     </div>
 </section>
