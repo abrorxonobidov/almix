@@ -13,9 +13,12 @@ return [
     'Fotogalereya' => 'Фотогалерея',
     'Kompaniya guruhi' => 'Группа компаний',
     'Yangiliklar' => 'Новости',
+    'So‘ngi yangiliklar' => 'Последние новости',
     'Barcha yangiliklar' => 'Все новости',
     'Ijtimoiy tarmoqlar' => 'Социальные сети',
     'Mahsulotlar' => 'Продукции',
     'Xizmatlar' => 'Услуги',
     'Media' => 'Медиа',
+    'Biz haqimizda' => 'О компании',
+    'Faxriy hodimlar' => 'Ведущие сотрудники',
 ];

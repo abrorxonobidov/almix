@@ -18,7 +18,7 @@ use yii\widgets\ListView;
     <div class="swiper-container_two">
         <div class="swiper-wrapper">
             <span class="title_other">
-                <?= Yii::t('main', 'Fotogalereya') ?>
+                <?= Yii::t('main', 'Media') ?>
             </span>
 
             <? echo

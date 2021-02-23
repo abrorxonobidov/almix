@@ -37,7 +37,7 @@ class SliderWidget extends Widget
                     return
                         Html::tag('div', Html::img('@web/uploads/' . $list->preview_image), ['class' => 'slider_img'])
                         .
-                        Html::tag('div', Html::a(Html::tag('span', $list->titleLang), '#', ['class' => 'description_in']), ['class' => 'description']);
+                        Html::tag('div', Html::a(Html::tag('span', $list->titleLang), ['site/view', 'id' => $list->id], ['class' => 'description_in']), ['class' => 'description']);
                 },
                 'itemOptions' => [
                     'tag' => 'div',
