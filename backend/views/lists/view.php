@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'category.titleLang',
+            'date',
             'title_uz',
             'title_ru',
             'title_en',
@@ -75,6 +76,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     return implode(' ', $gallery) . Html::tag('br') . $model->gallery;
                 }
             ],
+            [
+                'attribute' => 'video',
+            ],
+            'link.url',
             'created.date',
             'created.user.full_name',
             'updated.date',

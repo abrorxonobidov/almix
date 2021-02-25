@@ -25,6 +25,9 @@ use yii\helpers\Url;
  * @property int|null $status
  * @property int|null $region_id
  * @property string|null $inner_image
+ * @property string|null $video
+ * @property string|null $link
+ * @property string|null $date
  *
  * @property ListCategory $category
  */
@@ -47,7 +50,15 @@ class Lists extends BaseActiveRecord
             [['category_id', 'title_uz'], 'required'],
             [['category_id', 'order', 'status', 'region_id'], 'integer'],
             [['description_uz', 'description_ru', 'description_en'], 'string'],
-            [['title_uz', 'title_ru', 'title_en', 'preview_uz', 'preview_ru', 'preview_en', 'preview_image', 'gallery', 'inner_image'], 'string', 'max' => 255],
+            [
+                [
+                    'title_uz', 'title_ru', 'title_en', 'preview_uz', 'preview_ru', 'preview_en',
+                    'preview_image', 'gallery', 'inner_image',
+                    'video', 'link'
+                ],
+                'string', 'max' => 255
+            ],
+            [['date'], 'safe'],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ListCategory::class, 'targetAttribute' => ['category_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Regions::class, 'targetAttribute' => ['region_id' => 'id']],
             [['order'], 'default', 'value' => 500],
@@ -61,15 +72,18 @@ class Lists extends BaseActiveRecord
     public function attributeLabels()
     {
         return parent::attributeLabels() + [
-            'category_id' => Yii::t('main', 'Kategoriya ID'),
-            'category.titleLang' => Yii::t('main', 'Kategoriya'),
-            'preview_image' => Yii::t('main', 'Izoh rasmi'),
-            'inner_image' => Yii::t('main', 'Ichki rasmi'),
-            'helpInnerImage' => Yii::t('main', 'Ichki rasmi'),
-            'gallery' => Yii::t('main', 'Gallery'),
-            'helpGallery' => Yii::t('main', 'Gallery'),
-            'region_id' => Yii::t('main', 'Viloyat'),
-        ];
+                'category_id' => Yii::t('main', 'Kategoriya ID'),
+                'category.titleLang' => Yii::t('main', 'Kategoriya'),
+                'preview_image' => Yii::t('main', 'Izoh rasmi'),
+                'inner_image' => Yii::t('main', 'Ichki rasmi'),
+                'helpInnerImage' => Yii::t('main', 'Ichki rasmi'),
+                'gallery' => Yii::t('main', 'Gallery'),
+                'helpGallery' => Yii::t('main', 'Gallery'),
+                'region_id' => Yii::t('main', 'Viloyat'),
+                'video' => Yii::t('main', 'Video'),
+                'link' => Yii::t('main', 'Havola'),
+                'date' => Yii::t('main', 'Sana'),
+            ];
     }
 
     /**
@@ -116,7 +130,7 @@ class Lists extends BaseActiveRecord
                 $filePath = explode('/', $file);
                 $imageName = end($filePath);
                 if (file_exists($file)) {
-                    $config['path'][] = Url::to(self::imageSourcePath() .  $this->gallery . '/' . $imageName);
+                    $config['path'][] = Url::to(self::imageSourcePath() . $this->gallery . '/' . $imageName);
                     $config['config'][] = [
                         'caption' => $imageName,
                         'size' => filesize($file),

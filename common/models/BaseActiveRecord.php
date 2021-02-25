@@ -36,6 +36,7 @@ class BaseActiveRecord extends ActiveRecord
     public $helpImage;
     public $helpInnerImage;
     public $helpGallery;
+    public $helpVideo;
 
     public function afterSave($insert, $changedAttributes)
     {
@@ -88,6 +89,7 @@ class BaseActiveRecord extends ActiveRecord
             'status' => Yii::t('main', 'Holati'),
             'image' => Yii::t('main', 'Rasm'),
             'helpImage' => Yii::t('main', 'Rasm'),
+            'helpVideo' => Yii::t('main', 'Video'),
             'created.date' => Yii::t('main', 'Yaratilgan sana'),
             'created.user.full_name' => Yii::t('main', 'Yaratuvchi'),
             'updated.date' => Yii::t('main', 'Tahrirlangan sana'),

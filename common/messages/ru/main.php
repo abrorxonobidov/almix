@@ -19,6 +19,6 @@ return [
     'Mahsulotlar' => 'Продукции',
     'Xizmatlar' => 'Услуги',
     'Media' => 'Медиа',
-    'Biz haqimizda' => 'О компании',
+    'Biz haqimizda' => 'О нас',
     'Faxriy hodimlar' => 'Ведущие сотрудники',
 ];

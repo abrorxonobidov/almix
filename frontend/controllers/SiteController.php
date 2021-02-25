@@ -229,7 +229,7 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('view', [
+        return $this->render('about', [
             'list' => $this->findModel(59)
         ]);
     }

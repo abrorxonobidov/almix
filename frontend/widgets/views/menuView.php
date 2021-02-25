@@ -10,7 +10,9 @@ use yii\helpers\Url;
 ?>
 <div class="container h_width">
     <div class="header">
-        <a href="#" class="header_mobile_logo"><img src="/img/logo_almix.png" alt="" /></a>
+        <a href="<?= Url::to(['site/index'])?>" class="header_mobile_logo">
+            <img src="/img/logo_almix.png" alt="" width="180" />
+        </a>
         <div class="head_menu" id="headMenu">
             <nav class="navbar">
                 <div class="navbar-header">
@@ -29,7 +31,11 @@ use yii\helpers\Url;
 <!--                        <li><a href="--><?//= Url::to(['site/list', 'id' => 14])?><!--">--><?//=Yii::t('main', 'Xizmatlar')?><!--</a></li>-->
                         <li><a href="<?= Url::to(['site/about'])?>"><?=Yii::t('main', 'Biz haqimizda')?></a></li>
                         <li><a href="<?= Url::to(['site/list', 'id' => 2])?>"><?=Yii::t('main', 'Yangiliklar')?></a></li>
-                        <li class="mobile_logo"><a href="<?= Url::to(['site/index'])?>"><img src="/img/logo_almix.png" alt=""/></a></li>
+                        <li class="mobile_logo">
+                            <a href="<?= Url::to(['site/index'])?>">
+                                <img src="/img/logo_almix.png" alt="" width="180"/>
+                            </a>
+                        </li>
                         <li><a href="<?= Url::to(['site/list', 'id' => 4])?>"><?=Yii::t('main', 'Media')?></a></li>
                         <li><a href="<?= Url::to(['site/list', 'id' => 15])?>"><?=Yii::t('main', 'Faxriy hodimlar')?></a></li>
                     </ul>

@@ -48,6 +48,14 @@ use common\models\RegionsSearch;
             <?= $form->field($model, 'status')->dropDownList($model::getStatusListKeyAndTitle()) ?>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-3">
+            <?= $form->field($model, 'date')->textInput() ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'link')->textInput() ?>
+        </div>
+    </div>
     <br>
     <?
     $items = [];
@@ -162,6 +170,26 @@ use common\models\RegionsSearch;
             ]
         ]);
     ?>
+
+    <? $anonsConfig = $model->inputImageConfig('video', Url::to(['lists/file-remove']), Lists::class); ?>
+    <?= $form->field($model, 'helpVideo')
+        ->widget(FileInput::class, [
+            'options' => ['accept' => 'video/*'],
+            'pluginOptions' => [
+                'showPreview' => false,
+                //'previewFileType' => 'video',
+                'allowedFileExtensions' => ['mp4', 'MP4'],
+                //'initialPreview' => $anonsConfig['path'],
+                //'initialPreviewAsData' => true,
+                //'initialPreviewConfig' => $anonsConfig['config'],
+                //'initialPreviewFileType'=> 'video',
+                'showUpload' => false,
+                'showRemove' => false,
+                'browseClass' => 'btn btn-success',
+                'browseLabel' => Html::icon('folder-open'). '&nbsp;Tanlang...',
+                'browseIcon' => ''
+            ]
+        ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success']) ?>

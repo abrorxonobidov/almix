@@ -1050,16 +1050,22 @@ a.footer_logo{
 /********************************************/
 
 .news_full_content{
+    font-family: "EngraversGothic";
     display: block;
     position: relative;
     z-index: 1;
     margin: 20px 0 60px 0;
 }
-.news_full_content>p{
-    font-family: "EngraversGothic";
+.news_full_content p{
     font-size: 20px;
     line-height: 1;
     margin-bottom: 4px;
+    text-indent: 40px;
+}
+.news_full_content li{
+    list-style: initial;
+    font-size: 20px;
+    margin-left: 45px;
 }
 .full_content_img{
     display: block;
@@ -1097,10 +1103,12 @@ a.footer_logo{
 }
 .full_content_img .full_cont_title p{
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 26px;
+
 }
 .full_content_img .full_cont_title i{
     position: absolute;
@@ -1232,9 +1240,13 @@ a.footer_logo{
     /*display: block;*/
     /*width: 50px;*/
 }
-.social-icons li:nth-child(2) {
+.social-icons li {
     border-top: 2px solid #fff;
-    border-bottom: 2px solid #fff;
+    border-left: 0;
+}
+.social-icons li:nth-child(1) {
+    border-top: 0;
+    border-left: 0;
 }
 .social-icons li a {
     display: block;
