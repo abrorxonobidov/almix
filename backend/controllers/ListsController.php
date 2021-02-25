@@ -58,6 +58,7 @@ class ListsController extends BaseController
         if ($model->load(Yii::$app->request->post())) {
             $model->uploadImage('helpImage', 'preview_image', 'lists');
             $model->uploadImage('helpInnerImage', 'inner_image', 'lists');
+            $model->uploadVideo('helpVideo', 'video', 'lists');
             $model->uploadGallery('helpGallery', 'gallery', 'lists');
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -86,6 +87,7 @@ class ListsController extends BaseController
             $model->uploadImage('helpImage', 'preview_image', 'lists');
             $model->uploadImage('helpInnerImage', 'inner_image', 'lists');
             $model->uploadGallery('helpGallery', 'gallery', 'lists');
+            $model->uploadVideo('helpVideo', 'video', 'lists');
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             } else {

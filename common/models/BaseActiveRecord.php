@@ -311,6 +311,30 @@ class BaseActiveRecord extends ActiveRecord
 
 
     /**
+     * Uploads given image by post request
+     * @param string $fileInput
+     * @param string $field
+     * @param string $table
+     */
+    public function uploadVideo($fileInput, $field, $table = '')
+    {
+        $video = UploadedFile::getInstance($this, $fileInput);
+        if ($video) {
+            if (!$this->isNewRecord) {
+                if (!empty($this->$field)) {
+                    $old_video = self::uploadImagePath() . $this->$field;
+                    if (file_exists($old_video)) unlink($old_video);
+                }
+            }
+            $imageName = self::createGuid() . '_' . $table . '.' . $video->getExtension();
+            $this->$field = $imageName;
+            $imagePath = self::uploadImagePath() . $imageName;
+            $video->saveAs($imagePath);
+        }
+    }
+
+
+    /**
      * Returns File Upload Configuration for Kartik FileInput widget.
      * @param string $field
      * @param string $deleteUrl
