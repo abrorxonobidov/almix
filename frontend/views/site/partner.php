@@ -80,6 +80,11 @@ $this->title = $partner->category->titleLang . ' | ' . $partner->titleLang;
                 </div>
             </div>
 
+
+            <div class="text-center">
+                <?= $partner->gallery ? \frontend\widgets\InnerGalleryWidget::widget(['folder' => $partner->gallery]) : '' ?>
+            </div>
+
         </div>
 
         <?= \frontend\widgets\SimilarListItemsWidget::widget(['current_list' => $partner]) ?>

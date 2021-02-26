@@ -46,7 +46,7 @@ class InnerGalleryWidget extends Widget
             ];
         }
         return $items ?
-            Html::tag('h3', Yii::t('main', 'Fotogalereya'), ['class' => 'title'])
+            Html::tag('h3', Yii::t('main', 'Media'), ['class' => 'title'])
             . MyLightGalleryWidget::widget([
                 'id' => 'region_light_gallery',
                 'items' => $items,

@@ -388,6 +388,8 @@
         left: 50%;
         border-radius: 10px 10px 0 0;
         transform: translate(-50%, 0);
+        min-width: 220px;
+        text-align: center;
     }
     .social-icons li {
         display: inline-block;

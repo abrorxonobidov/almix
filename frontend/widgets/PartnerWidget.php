@@ -20,7 +20,7 @@ class PartnerWidget extends Widget
         $searchModel = new ListsSearch();
         $searchModel['category_id'] = 11;
         $dataProvider = $searchModel->search([]);
-        $dataProvider->pagination->pageSize = 5;
+        $dataProvider->pagination->pageSize = 10;
         $dataProvider->pagination->page = 0;
         return $this->render('partnerView', [
             'dataProvider' => $dataProvider
