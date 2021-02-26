@@ -14,7 +14,7 @@ use yii\bootstrap\Html;
  * @var $this \yii\web\View
  */
 
-$imageSrc = $list->inner_image ? "/uploads/$list->inner_image" : '/img/default_image.jpg';
+$imageSrc = $list->preview_image ? "/uploads/$list->preview_image" : '/img/default_image.jpg';
 
 $this->title = $list->category->titleLang . ' | ' . $list->titleLang;
 
@@ -51,6 +51,30 @@ $this->title = $list->category->titleLang . ' | ' . $list->titleLang;
                             <?= $list->previewLang ?>
                         </h3>
                     </div>
+                    <? if ($list->inner_image) { ?>
+                        <br>
+                        <div class="manager-area">
+                            <?= MyLightGalleryWidget::widget([
+                                'id' => 'partner_inner_image',
+                                'items' => [
+                                    [
+                                        'thumb' => "/uploads/$list->inner_image",
+                                        'src' => "/uploads/$list->inner_image",
+                                    ]
+                                ],
+                                'options' => [
+                                    'mode' => 'lg-zoom-in-big',
+                                    'share' => false,
+                                    'rotate' => false,
+                                    'flipHorizontal' => false,
+                                    'flipVertical' => false
+                                ]
+                            ]); ?>
+                            <h3 class="text-center">
+                                <?= Yii::t('main', 'Guvohnoma') ?>
+                            </h3>
+                        </div>
+                    <? } ?>
                 </div>
                 <div class="col-sm-pull-4 col-sm-8">
                     <?= $list->descriptionLang ?>

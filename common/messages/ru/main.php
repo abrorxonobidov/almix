@@ -21,4 +21,5 @@ return [
     'Media' => 'Медиа',
     'Biz haqimizda' => 'О нас',
     'Faxriy hodimlar' => 'Ведущие сотрудники',
+    'Guvohnoma' => 'Свидетельство',
 ];
