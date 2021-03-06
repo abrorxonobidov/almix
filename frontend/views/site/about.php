@@ -16,7 +16,7 @@ use yii\bootstrap\Html;
 
 $imageSrc = $list->preview_image ? "/uploads/$list->preview_image" : '/img/default_image.jpg';
 
-$this->title = $list->category->titleLang . ' | ' . $list->titleLang;
+$this->title = Yii::t('main', 'Biz haqimizda');
 
 ?>
 <section class="block_sixth block_sixth_in">
@@ -24,7 +24,7 @@ $this->title = $list->category->titleLang . ' | ' . $list->titleLang;
     <div class="container h_width">
         <div class="inner_title">
             <span>
-                <?= $list->titleLang ?>
+                <?= $this->title ?>
             </span>
         </div>
         <div class="news_full_content">
@@ -71,7 +71,7 @@ $this->title = $list->category->titleLang . ' | ' . $list->titleLang;
                                 ]
                             ]); ?>
                             <h3 class="text-center">
-                                <?= Yii::t('main', 'Guvohnoma') ?>
+                                <?= $list->titleLang ?>
                             </h3>
                         </div>
                     <? } ?>

@@ -677,6 +677,9 @@ a.news_image img{
     right: 15px;
     transform: translateY(-50%);
 }
+a:hover .date:after {
+    filter: invert(1);
+}
 a.news_all_link{
     display: table;
     margin: 20px auto 0 auto;
@@ -874,6 +877,7 @@ a.news_all_link:hover{
     position: relative;
     padding: 270px 0 25px 0;
     color: #fff;
+    min-height: 240px;
 }
 .block_tenth:before{
     content: '';
@@ -886,7 +890,7 @@ a.news_all_link:hover{
     bottom: -530px; /** todo footer menu ko'ringanda -100px bo'lishi kerak*/
     transform: translateX(-50%);
 }
-.block_tenth:after{
+/*.block_tenth:after{
     content: '';
     background: url("../img/footer_before.png") no-repeat;
     width: 532px;
@@ -895,7 +899,7 @@ a.news_all_link:hover{
     left: 50%;
     bottom: -250px;
     transform: translateX(-50%);
-}
+}*/
 .footer_list{
     position: relative;
     z-index: 1;

@@ -152,6 +152,9 @@
     }
 }
 @media screen and (max-width: 991px){
+    .sponsor_list li a {
+        font-size: 14px;
+    }
     #actual_news_slider .slider_img{
         width: 100%;
         height: 383px;

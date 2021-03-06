@@ -27,6 +27,11 @@ makeMap = (details) => {
     $("#jqvmap1_" + current_code).attr("fill", "#00ccff");
 };
 
+const emptyText = {
+    uz: 'Tez kunlarda ushbu hududda savdo doʻkonimiz oʻz faoliyatini boshlaydi',
+    ru: 'Наш магазин скоро откроется в этом районе',
+};
+
 showMapInfo = (item, code) => {
     let htmlView = $('<div />'),
         modalLink = '',
@@ -35,7 +40,7 @@ showMapInfo = (item, code) => {
         image = $('<span />', {class: 'reg_image_in', html: '<img src="/img/hourglass.png" alt="" />'}),
         regAddress = $('<div />', {
             class: 'reg_address',
-            html: 'Tez kunlarda ushbu hududda savdo doʻkonimiz oʻz faoliyatini boshlaydi'
+            html: emptyText[$('html').attr('lang')]
         });
     if (typeof (item) !== 'undefined') {
         image = $('<span />', {

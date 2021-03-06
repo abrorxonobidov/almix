@@ -22,4 +22,5 @@ return [
     'Biz haqimizda' => 'О нас',
     'Faxriy hodimlar' => 'Ведущие сотрудники',
     'Guvohnoma' => 'Свидетельство',
+    'Tez kunlarda ushbu hududda savdo doʻkonimiz oʻz faoliyatini boshlaydi' => 'Наш магазин скоро откроется в этом районе',
 ];

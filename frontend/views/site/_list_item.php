@@ -24,4 +24,6 @@ $view = @Yii::$app->params['links'][$list->category_id] ?? 'site/view';
         </div>
     </div>
 </div>
-<span class="date"><?= ($updated = $list->updated) === null ? '' : date('d M Y', strtotime($updated->date)) ?></span>
+<a href="<?=\yii\helpers\Url::to([$view, 'id' => $list->id])?>" style="text-decoration: none; display: block">
+    <span class="date"><?= ($updated = $list->date) === null ? '' : date('d M Y', strtotime($updated->date)) ?></span>
+</a>
