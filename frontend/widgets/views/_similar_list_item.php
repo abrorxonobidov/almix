@@ -25,4 +25,6 @@ $imageSrc = $list->preview_image ? "/uploads/$list->preview_image" : '/img/defau
         </div>
     </div>
 </div>
-<span class="date"><?= ($updated = $list->updated) === null ? '' : date('d M Y', strtotime($updated->date)) ?></span>
+<a href="<?= \yii\helpers\Url::to([$view, 'id' => $list->id]) ?>" style="text-decoration: none; display: block">
+    <span class="date"><?= $list->date ? date('d M Y', strtotime($list->date)) : '' ?></span>
+</a>

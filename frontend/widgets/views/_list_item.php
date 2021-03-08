@@ -13,6 +13,7 @@ use yii\bootstrap\Html;
  */
 
 $imageSrc = $list->preview_image ? "/uploads/$list->preview_image" : '/img/default_image.jpg';
+$view = @Yii::$app->params['links'][$list->category_id] ?? 'site/view';
 
 ?>
 <div class="thumbnail">

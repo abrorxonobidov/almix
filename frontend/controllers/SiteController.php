@@ -12,8 +12,6 @@ use common\models\Lists;
 use common\models\Regions;
 use frontend\models\ListsSearch;
 use Yii;
-use yii\filters\AjaxFilter;
-use yii\filters\ContentNegotiator;
 use yii\helpers\Html;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -29,16 +27,29 @@ class SiteController extends Controller
     {
         return [
             [
-                'class' => AjaxFilter::class,
+                'class' => 'yii\filters\AjaxFilter',
                 'errorMessage' => Yii::t('main', 'Sahifa mavjud emas'),
                 'only' => ['regions-list', 'regions-code']
             ],
             [
-                'class' => ContentNegotiator::class,
+                'class' => 'yii\filters\ContentNegotiator',
                 'formats' => ['application/json' => 'json'],
                 'only' => ['regions-list']
             ]
         ];
+    }
+
+
+    /**
+     * @param $action
+     * @return bool|\yii\web\Response
+     * @throws \yii\web\BadRequestHttpException
+     */
+    public function beforeAction($action)
+    {
+        if (Yii::$app->request->serverName == 'almix.uz' && $this->action->id != 'uc')
+            return $this->redirect(['uc']);
+        return parent::beforeAction($action);
     }
 
 
@@ -50,6 +61,12 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
+            ],
+            'uc' => [
+                'class' => 'yii\web\ViewAction',
+                'viewPrefix' => '',
+                'layout' => false,
+                'defaultView' => 'uc'
             ]
         ];
     }
