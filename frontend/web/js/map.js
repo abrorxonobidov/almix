@@ -29,7 +29,7 @@ makeMap = (details) => {
 
 const emptyText = {
     uz: 'Tez kunlarda ushbu hududda savdo doʻkonimiz oʻz faoliyatini boshlaydi',
-    ru: 'Наш магазин скоро откроется в этом районе',
+    ru: 'Наш филиал скоро откроется в этой области',
 };
 
 showMapInfo = (item, code) => {

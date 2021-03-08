@@ -31,7 +31,7 @@ class AppAsset extends AssetBundle
         'js/fancybox.min.js',
         'js/jquery.vmap.js',
         'js/vmap.uzbekistan.js',
-        'js/map.js?v=13',
+        'js/map.js?v=14',
         'js/masonry.pkgd.js',
         'js/imagesLoaded.pkgd.js',
         'js/main.js',

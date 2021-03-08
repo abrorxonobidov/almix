@@ -80,11 +80,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'video',
                 'value' => function ($model) {
                     /** @var $model \common\models\Lists */
-                    return '
+                    return $model->video ? '
                     <video width="320" height="240" controls>
                         <source src="' . $model::imageSourcePath() . $model->video . '" type="video/mp4">
                         Your browser does not support the video tag.
-                    </video>';
+                    </video>' : '';
                 },
                 'format' => 'raw'
             ],
