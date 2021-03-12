@@ -14,10 +14,9 @@ use yii\helpers\Url;
             <img src="/img/logo_almix.png" alt="" width="180" />
         </a>
         <div class="head_menu" id="headMenu">
-            <nav class="navbar">
+            <nav class="navbar" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#bs-navbar-collapse-1" aria-expanded="false">
+                    <button type="button" class="navbar-toggle collapsed">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
