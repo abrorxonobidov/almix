@@ -25,4 +25,5 @@ return [
     'Tez kunlarda ushbu hududda savdo doʻkonimiz oʻz faoliyatini boshlaydi' => 'Наш магазин скоро откроется в этом районе',
     'Texnik ishlar olib borilmoqda' => 'Ведутся технические работы',
     'Co-working markazi' => 'Co-working центр',
+    'Batafsil' => 'Подробно',
 ];
