@@ -251,4 +251,16 @@ class SiteController extends Controller
         ]);
     }
 
+
+    /**
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionCoWorking()
+    {
+        return $this->render('co_working', [
+            'list' => $this->findModel(73)
+        ]);
+    }
+
 }
