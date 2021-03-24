@@ -45,12 +45,12 @@ class SiteController extends Controller
      * @return bool|\yii\web\Response
      * @throws \yii\web\BadRequestHttpException
      */
-    public function beforeAction($action)
+    /*public function beforeAction($action)
     {
         if (Yii::$app->request->serverName == 'almix.uz' && $this->action->id != 'uc')
             return $this->redirect(['uc']);
         return parent::beforeAction($action);
-    }
+    }*/
 
 
     /**

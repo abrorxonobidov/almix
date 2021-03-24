@@ -36,7 +36,7 @@ use yii\helpers\Url;
                             </a>
                         </li>
                         <li><a href="<?= Url::to(['site/list', 'id' => 4])?>"><?=Yii::t('main', 'Media')?></a></li>
-                        <li><a href="<?= Url::to(['site/list', 'id' => 15])?>"><?=Yii::t('main', 'Faxriy hodimlar')?></a></li>
+                        <li><a href="<?= Url::to(['site/list', 'id' => 15])?>"><?=Yii::t('main', 'Bizning faxriylarimiz')?></a></li>
                         <li><a href="<?= Url::to(['site/co-working'])?>"><?=Yii::t('main', 'Co-working')?></a></li>
                     </ul>
                 </div>

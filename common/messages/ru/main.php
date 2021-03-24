@@ -26,4 +26,5 @@ return [
     'Texnik ishlar olib borilmoqda' => 'Ведутся технические работы',
     'Co-working markazi' => 'Co-working центр',
     'Batafsil' => 'Подробно',
+    'Bizning faxriylarimiz' => 'Наши ветераны',
 ];
