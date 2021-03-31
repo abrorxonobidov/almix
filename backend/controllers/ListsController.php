@@ -89,7 +89,7 @@ class ListsController extends BaseController
             $model->uploadGallery('helpGallery', 'gallery', 'lists');
             $model->uploadVideo('helpVideo', 'video', 'lists');
             if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['update', 'id' => $model->id]);
             } else {
                 DebugHelper::printSingleObject($model->errors, 1);
             }

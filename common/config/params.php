@@ -23,6 +23,7 @@ return [
     'allowedImageExtension' => "/{*.jpg,*.JPG,*.jpeg,*.gif,*.png}",
     'links' => [
         4 => 'site/gallery',
+        5 => 'site/gallery',
         12 => 'site/region',
         11 => 'site/partner',
     ]

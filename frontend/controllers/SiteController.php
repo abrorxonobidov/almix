@@ -222,7 +222,7 @@ class SiteController extends Controller
     public function actionGallery($id)
     {
         return $this->render('gallery', [
-            'gallery' => $this->findModel($id, 4)
+            'gallery' => $this->findModel($id, [4, 5])
         ]);
     }
 
