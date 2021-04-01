@@ -621,7 +621,7 @@ html, body{
     text-align: center;
 }
 .news_box:hover a.news_image img{
-    transform: scale(1.1);
+    /*transform: scale(1.1);*/
 }
 .news_box:last-child{
     margin: 35px 0 20px 0;
@@ -632,11 +632,11 @@ a.news_image{
     display: block;
     background-color: #000;
     width: 100%;
-    height: 266px;
+    /*height: 266px;*/
 }
 a.news_image img{
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
     object-fit: cover;
     transition: all 0.3s ease-in-out;
 }
@@ -1084,7 +1084,7 @@ a.footer_logo{
     position: relative;
     overflow: hidden;
     width: 61%;
-    height: 440px;
+    /*height: 440px;*/
     border-radius: 30px;
     border-top-right-radius: 0;
 }

@@ -72,6 +72,7 @@ use common\models\RegionsSearch;
                         ],
                         'preset' => 'custom',
                         'clientOptions' => [
+                            'allowedContent' => true,
                             'height' => 400,
                             'language' => 'en',
                             'extraPlugins' => 'font,smiley,colorbutton,iframe,selectall,copyformatting,justify',
