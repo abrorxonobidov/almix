@@ -30,6 +30,10 @@ $this->title = $partner->category->titleLang . ' | ' . $partner->titleLang;
             <div class="row region-description">
                 <div class="col-sm-8">
                     <?= $partner->descriptionLang ?>
+                    <br>
+                    <div class="text-center">
+                        <?= $partner->gallery ? \frontend\widgets\InnerGalleryWidget::widget(['folder' => $partner->gallery]) : '' ?>
+                    </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="manager-area">
@@ -81,9 +85,7 @@ $this->title = $partner->category->titleLang . ' | ' . $partner->titleLang;
             </div>
 
 
-            <div class="text-center">
-                <?= $partner->gallery ? \frontend\widgets\InnerGalleryWidget::widget(['folder' => $partner->gallery]) : '' ?>
-            </div>
+
 
         </div>
 
