@@ -15,7 +15,7 @@ class AppAsset extends AssetBundle
         'css/jqvmap.css',
         //'css/bootstrap.min.css',
         'css/jquery-ui.css',
-        'css/style.css?v=9',
+        'css/style.css?v=12',
         'css/swiper-bundle.min.css',
         'css/media.css?v=14',
         'css/owl.carousel.css',
@@ -34,7 +34,7 @@ class AppAsset extends AssetBundle
         'js/map.js?v=14',
         'js/masonry.pkgd.js',
         'js/imagesLoaded.pkgd.js',
-        'js/main.js',
+        'js/main.js?v=3',
     ];
     public $depends = [
         'yii\web\YiiAsset',

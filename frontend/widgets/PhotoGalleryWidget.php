@@ -19,7 +19,7 @@ class PhotoGalleryWidget extends Widget
         $searchModel = new ListsSearch();
         $searchModel['category_id'] = 4;
         $dataProvider = $searchModel->search([]);
-        $dataProvider->pagination->pageSize = 6;
+        $dataProvider->pagination->pageSize = 4;
         $dataProvider->pagination->page = 0;
 
         return $this->render('photo_gallery/photoGalleryView', [
