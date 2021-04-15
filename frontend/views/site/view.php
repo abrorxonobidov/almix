@@ -33,7 +33,7 @@ $this->title = $list->category->titleLang . ' | ' . $list->titleLang;
                 </span>
                 <span class="full_cont_title">
                     <p><?= $list->titleLang ?></p>
-                    <i><?= $list->date ? date('d M Y', strtotime($list->date)) : '' ?></i>
+                    <i><?//= $list->date ? date('d M Y', strtotime($list->date)) : '' ?></i>
                 </span>
             </div>
             <p>

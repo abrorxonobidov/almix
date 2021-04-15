@@ -1222,6 +1222,10 @@ a.footer_logo{
 .manager-area img {
     border-radius: 10px;
 }
+.manager-area a {
+    color: white;
+    font-weight: bold;
+}
 .region-description {
     font-family: "EngraversGothic";
     font-size: 20px;
